@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý khách hàng - Shop Hoa Nguyễn Đức</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: #f8f9fa;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 230px;
+        background: #ff6600;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+      }
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .nav-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .nav-item:hover,
+      .nav-item.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Content */
+      .content {
+        flex: 1;
+        padding: 30px;
+        background: #fff;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+
+      #searchBox {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      th {
+        background: #ff6600;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa<br />Nguyễn Đức</h2>
+
+      <div class="nav-item" onclick="navigate('mainPage.html')">
+        🏠 Trang chủ
+      </div>
+      <div class="nav-item" onclick="navigate('danhmuc.html')">
+        🌼 Danh mục hoa
+      </div>
+      <div class="nav-item" onclick="navigate('hoa.html')">🌷 Hoa</div>
+      <div class="nav-item" onclick="navigate('khuyenmai.html')">
+        🎁 Khuyến mãi
+      </div>
+      <div class="nav-item" onclick="navigate('daban.html')">
+        💐 Sản phẩm đã bán
+      </div>
+      <div class="nav-item" onclick="navigate('donhang.html')">
+        🧾 Đơn đặt hàng
+      </div>
+      <div class="nav-item active" onclick="navigate('thongTinKHachHang.html')">
+        👤 Khách hàng
+      </div>
+    </div>
+    <script>
+      function navigate(page) {
+        window.location.href = page;
+      }
+    </script>
+
+    <!-- Content -->
+    <div class="content">
+      <h1>Thông tin khách hàng</h1>
+
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Tìm kiếm theo mã KH hoặc họ tên..."
+      />
+
+      <table>
+        <thead>
+          <tr>
+            <th>Mã KH</th>
+            <th>Họ Tên</th>
+            <th>Gmail</th>
+            <th>Giới Tính</th>
+            <th>Năm Sinh</th>
+          </tr>
+        </thead>
+        <tbody id="customerTable"></tbody>
+      </table>
+    </div>
+
+    <script>
+      // =============================
+      // 1. Tạo sẵn 10 bản ghi khách hàng
+      // =============================
+      const defaultCustomers = [
+        {
+          maKH: "KH01",
+          HoTen: "Nguyễn Văn A",
+          Gmail: "a@gmail.com",
+          GioiTinh: "Nam",
+          NamSinh: "2000-05-12",
+        },
+        {
+          maKH: "KH02",
+          HoTen: "Trần Thị B",
+          Gmail: "b@gmail.com",
+          GioiTinh: "Nữ",
+          NamSinh: "2001-03-22",
+        },
+        {
+          maKH: "KH03",
+          HoTen: "Lê Văn C",
+          Gmail: "c@gmail.com",
+          GioiTinh: "Nam",
+          NamSinh: "1999-11-02",
+        },
+        {
+          maKH: "KH04",
+          HoTen: "Phạm Thị D",
+          Gmail: "d@gmail.com",
+          GioiTinh: "Nữ",
+          NamSinh: "2002-07-19",
+        },
+        {
+          maKH: "KH05",
+          HoTen: "Vũ Minh E",
+          Gmail: "e@gmail.com",
+          GioiTinh: "Nam",
+          NamSinh: "1998-09-09",
+        },
+        {
+          maKH: "KH06",
+          HoTen: "Hoàng Lan F",
+          Gmail: "f@gmail.com",
+          GioiTinh: "Nữ",
+          NamSinh: "2003-01-17",
+        },
+        {
+          maKH: "KH07",
+          HoTen: "Ngô Văn G",
+          Gmail: "g@gmail.com",
+          GioiTinh: "Nam",
+          NamSinh: "1997-12-25",
+        },
+        {
+          maKH: "KH08",
+          HoTen: "Phan Thị H",
+          Gmail: "h@gmail.com",
+          GioiTinh: "Nữ",
+          NamSinh: "2000-04-30",
+        },
+        {
+          maKH: "KH09",
+          HoTen: "Đặng Văn I",
+          Gmail: "i@gmail.com",
+          GioiTinh: "Nam",
+          NamSinh: "1996-08-14",
+        },
+        {
+          maKH: "KH10",
+          HoTen: "Bùi Thị K",
+          Gmail: "k@gmail.com",
+          GioiTinh: "Nữ",
+          NamSinh: "2001-10-05",
+        },
+      ];
+
+      // Lưu vào localStorage nếu chưa có
+      if (!localStorage.getItem("customers")) {
+        localStorage.setItem("customers", JSON.stringify(defaultCustomers));
+      }
+
+      let customers = JSON.parse(localStorage.getItem("customers"));
+
+      // =============================
+      // 2. Hàm hiển thị danh sách
+      // =============================
+      function displayCustomers(list) {
+        const table = document.getElementById("customerTable");
+        table.innerHTML = "";
+
+        list.forEach((c) => {
+          table.innerHTML += `
+                <tr>
+                    <td>${c.maKH}</td>
+                    <td>${c.HoTen}</td>
+                    <td>${c.Gmail}</td>
+                    <td>${c.GioiTinh}</td>
+                    <td>${c.NamSinh}</td>
+                </tr>
+            `;
+        });
+      }
+
+      displayCustomers(customers);
+
+      // =============================
+      // 3. Tìm kiếm khách hàng
+      // =============================
+      document.getElementById("search").addEventListener("input", function () {
+        const keyword = this.value.toLowerCase();
+
+        const filtered = customers.filter(
+          (c) =>
+            c.maKH.toLowerCase().includes(keyword) ||
+            c.HoTen.toLowerCase().includes(keyword)
+        );
+
+        displayCustomers(filtered);
+      });
+    </script>
+  </body>
+</html>

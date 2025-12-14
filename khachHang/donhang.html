@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đơn hàng của tôi</title>
+    <style></style>
+    <link rel="stylesheet" href="../CSS/screen1.css" />
+    <link rel="stylesheet" href="../CSS/screen2.css" />
+    <link rel="stylesheet" href="../CSS/giohang.css" />
+  </head>
+  <body>
+    <div>
+      <div style="background-color: white">
+        <div class="head1">
+          <div style="width: 50%" class="a">
+            <a href="main_screen1.html"
+              >Tiệm hoa Xuân Thành - Uy tín - Chuyên nghiệp - Phục vụ 24/7</a
+            >
+          </div>
+          <div style="width: 10%"></div>
+          <div style="width: 30%" class="head1 hide-on-mobile">
+            <div>
+              <div class="menu-login">
+                <div class="menu-button">Tài khoản</div>
+                <ul class="dropdown">
+                  <li><a href="doiMK.html">Đổi mật khẩu</a></li>
+                  <li><a href="Login.html">Đăng xuất</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>Sản phẩm</div>
+            <div>Hệ thống cửa hàng</div>
+          </div>
+        </div>
+        <div class="head2" style="background-color: white">
+          <div>
+            <img src="../anh/shopXuanThanh.png" alt="" />
+          </div>
+          <div class="search-box" style="margin-top: 15px">
+            
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <button>🔍</button>
+          </div>
+          <div style="width: 20px"></div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Gọi Điện</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Liên hệ zalo</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="head1 hide-on-mobile" style="height: 50px; line-height: 50px">
+        <div style="margin-left: 12%; width: 27.5%">
+          <div class="menu-container">
+            <!-- <i class="fas fa-bars"></i> -->
+            <div class="menu-title">
+              <p style="margin-top: -10px">&#9776; Danh mục sản phẩm</p>
+            </div>
+          </div>
+
+          <!-- Sidebar menu -->
+          <div class="sidebar">
+            <div class="menu-item">
+              Khuyến mãi gốc <span class="hot">HOT</span>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa Tươi ▸</span>
+              <div class="submenu">
+                <div>Hoa cẩm chướng</div>
+                <div>Hoa cẩm tú cầu</div>
+                <div>Hoa cát tường</div>
+                <div>Hoa đồng tiền</div>
+                <div>Hoa hồng</div>
+                <div>Hoa Hướng dương</div>
+                <div>Hoa lan</div>
+                <div>Hoa ly</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Kiểu dáng ▸</span>
+              <div class="submenu">
+                <div>Giỏ hoa</div>
+                <div>Bình hoa</div>
+                <div>Bó hoa</div>
+                <div>Hoa hộp gỗ</div>
+                <div>Kệ hoa khai</div>
+                <div>Lãng hoa</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa sinh nhật ▸</span>
+              <div class="submenu">
+                <div>Tặng sinh nhật bạnbạn</div>
+                <div>Hoa tặng vợ</div>
+                <div>Hoa tặng xếp</div>
+                <div>Hoa tặng đồng nghiệp</div>
+                <div>Tặng người yêu</div>
+              </div>
+            </div>
+
+            <div class="menu-item">Hoa Chia Buồn</div>
+            <div class="menu-item">Hoa cảm ơn</div>
+            <div class="menu-item">Hoa khai trương</div>
+            <div class="menu-item">Hoa ngày nhà giáo</div>
+            <div class="menu-item">Hoa ngày phụ nữ</div>
+            <div class="menu-item">Hoa tình yêu</div>
+          </div>
+        </div>
+        <div style="width: 30%; gap: 15px; line-height: 50px; display: flex">
+          <div>Trang chủ</div>
+          <div>Sản phẩm</div>
+          <div>Giới thiệu</div>
+          <div>Tin tức</div>
+          <div>Liên hệ</div>
+        </div>
+        <div style="width: 25%">
+          <a href="shopping_cart.html"> Giỏ hàng 🛒</a>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        font-family: Arial, sans-serif;
+        background-color: #fff8f0;
+        padding: 30px;
+        color: #333;
+      "
+    >
+      <h2 style="text-align: center; color: #ff6600">ĐƠN HÀNG CỦA BẠN</h2>
+
+      <div id="order-detail" style="margin-top: 20px"></div>
+
+      <div style="text-align: center; margin-top : 30px;">
+        <a
+          href="main_screen1.html"
+          style="
+            background-color: orange;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+          "
+          >🏠 Quay lại trang chủ</a
+        >
+      </div style="text-align: center; margin-top: 30px">
+    </div>
+
+    <div id="order-list"></div>
+
+<div id="order-list"></div>
+
+<script>
+function loadOrders() {
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const listDiv = document.getElementById("order-list");
+
+  if (orders.length === 0) {
+    listDiv.innerHTML = `<p style="text-align:center; color:red;">❌ Chưa có đơn hàng nào.</p>`;
+    return;
+  }
+
+  let html = "";
+
+  orders.forEach((order, index) => {
+    const firstImg = order.gioHang[0]?.image || "https://via.placeholder.com/80";
+
+    html += `
+      <div 
+        style="
+          background:#fff;
+          padding:15px;
+          border-radius:10px;
+          box-shadow:0 2px 8px rgba(0,0,0,0.08);
+          margin-bottom:18px;
+        "
+      >
+
+        <!-- Header -->
+        <div style="display:flex; align-items:center; gap:12px;">
+          
+          <img 
+            src="${firstImg}" 
+            style="
+              width:70px;
+              height:70px;
+              border-radius:8px;
+              object-fit:cover;
+              border:1px solid #eee;
+            "
+          >
+
+          <div style="flex:1;">
+            <div><b>Mã đơn:</b> ${order.maDonHang}</div>
+            <div><b>Khách:</b> ${order.khachHang.hoTen}</div>
+            <div style="color:#ff4d00; font-weight:bold; font-size:14px;">
+              ${order.trangThai}
+            </div>
+          </div>
+
+          <div style="color:#e60023; font-weight:bold; font-size:16px;">
+            ${order.tongTien.toLocaleString()} đ
+          </div>
+
+        </div>
+
+        <!-- Button -->
+        <button
+          onclick="toggleDetail(${index})"
+          style="
+            background:#ff6600;
+            color:white;
+            padding:8px 14px;
+            border:none;
+            border-radius:6px;
+            margin-top:10px;
+            cursor:pointer;
+            font-size:14px;
+          "
+        >
+          👁 Xem chi tiết
+        </button>
+
+        <!-- Detail -->
+        <div 
+          id="detail-${index}"
+          style="
+            margin-top:15px;
+            padding:12px;
+            border-radius:8px;
+            background:#fafafa;
+            border:1px solid #eee;
+            display:none;
+          "
+        >
+
+          <p><b>Địa chỉ:</b> ${order.khachHang.diaChi}</p>
+          <p><b>SĐT:</b> ${order.khachHang.soDienThoai}</p>
+          <p><b>Ghi chú:</b> ${order.khachHang.ghiChu || "Không có"}</p>
+
+          <h4 style="margin-top:15px;">📦 Sản phẩm</h4>
+
+          <table style="width:100%; border-collapse:collapse; margin-top:12px;">
+            <tr>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Ảnh</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Tên SP</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">SL</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Giá</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Tổng</th>
+            </tr>
+
+            ${order.gioHang.map(sp => `
+              <tr>
+                <td style="border:1px solid #ddd; padding:8px;">
+                  <img 
+                    src="${sp.image}" 
+                    style="width:60px; height:60px; object-fit:cover; border-radius:5px;"
+                  >
+                </td>
+                <td style="border:1px solid #ddd; padding:8px;">${sp.name}</td>
+                <td style="border:1px solid #ddd; padding:8px;">${sp.quantity}</td>
+                <td style="border:1px solid #ddd; padding:8px;">${sp.price.toLocaleString()} đ</td>
+                <td style="border:1px solid #ddd; padding:8px;">
+                  ${(sp.price * sp.quantity).toLocaleString()} đ
+                </td>
+              </tr>
+            `).join("")}
+
+          </table>
+        </div>
+
+      </div>
+    `;
+  });
+
+  listDiv.innerHTML = html;
+}
+
+function toggleDetail(i) {
+  const box = document.getElementById("detail-" + i);
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+window.addEventListener("DOMContentLoaded", loadOrders);
+</script>
+
+
+
+  </body>
+</html>

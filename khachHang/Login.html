@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<head>
+  <style></style>
+  <link rel="stylesheet" href="../CSS/Login_user.css" />
+  <link rel="stylesheet" href="../CSS/screen1.css" />
+  <link rel="stylesheet" href="../CSS/screen2.css" />
+</head>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đăng nhập</title>
+    <script>
+      function togglePassword() {
+        const password = document.getElementById("password");
+        password.type = password.type === "password" ? "text" : "password";
+      }
+
+      function login(event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (user && user.username === username && user.password === password) {
+          alert("Đăng nhập thành công!");
+          window.location.href = "main_screen1.html";
+        } else {
+          alert("Tên đăng nhập hoặc mật khẩu sai!");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div style="background-color: white">
+      <div>
+        <div style="background-color: white">
+          <div class="head1">
+            <div style="width: 50%" class="a">
+              <a href="main_screen1.html"
+                >Tiệm hoa Xuân Thành - Uy tín - Chuyên nghiệp - Phục vụ 24/7</a
+              >
+            </div>
+            <div style="width: 10%"></div>
+            <div style="width: 30%" class="head1 hide-on-mobile">
+              <div>
+                <div class="menu-login">
+                  <div class="menu-button">Tài khoản</div>
+                  <ul class="dropdown">
+                    <li><a href="doiMK.html">Đổi mật khẩu</a></li>
+                    <li><a href="Login.html">Đăng xuất</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div>Sản phẩm</div>
+              <div>Hệ thống cửa hàng</div>
+            </div>
+          </div>
+          <div class="head2" style="background-color: white">
+            <div>
+              <img src="../anh/shopXuanThanh.png" alt="" />
+            </div>
+            <div class="search-box" style="margin-top: 15px">
+              <select>
+                <option>Chọn danh mục...</option>
+                <option>Điện thoại</option>
+                <option>Máy tính</option>
+                <option>Phụ kiện</option>
+              </select>
+              <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+              <button>🔍</button>
+            </div>
+            <div style="width: 20px"></div>
+            <div class="DienThoai">
+              <div><img src="../anh/dienthoai.png" alt="" /></div>
+              <div>
+                <p>Gọi Điện</p>
+                <p style="margin-top: -7px">092.3355.800</p>
+              </div>
+            </div>
+            <div class="DienThoai">
+              <div><img src="../anh/dienthoai.png" alt="" /></div>
+              <div>
+                <p>Liên hệ zalo</p>
+                <p style="margin-top: -7px">092.3355.800</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="head1 hide-on-mobile"
+          style="height: 50px; line-height: 50px"
+        >
+          <div style="margin-left: 12%; width: 27.5%">
+            <div class="menu-container">
+              <!-- <i class="fas fa-bars"></i> -->
+              <div class="menu-title">
+                <p style="margin-top: -10px">&#9776; Danh mục sản phẩm</p>
+              </div>
+            </div>
+
+            <!-- Sidebar menu -->
+            <div class="sidebar">
+              <div class="menu-item">
+                Khuyến mãi gốc <span class="hot">HOT</span>
+              </div>
+
+              <div class="menu-item">
+                <span>Hoa Tươi ▸</span>
+                <div class="submenu">
+                  <div>Hoa cẩm chướng</div>
+                  <div>Hoa cẩm tú cầu</div>
+                  <div>Hoa cát tường</div>
+                  <div>Hoa đồng tiền</div>
+                  <div>Hoa hồng</div>
+                  <div>Hoa Hướng dương</div>
+                  <div>Hoa lan</div>
+                  <div>Hoa ly</div>
+                </div>
+              </div>
+
+              <div class="menu-item">
+                <span>Kiểu dáng ▸</span>
+                <div class="submenu">
+                  <div>Giỏ hoa</div>
+                  <div>Bình hoa</div>
+                  <div>Bó hoa</div>
+                  <div>Hoa hộp gỗ</div>
+                  <div>Kệ hoa khai</div>
+                  <div>Lãng hoa</div>
+                </div>
+              </div>
+
+              <div class="menu-item">
+                <span>Hoa sinh nhật ▸</span>
+                <div class="submenu">
+                  <div>Tặng sinh nhật bạnbạn</div>
+                  <div>Hoa tặng vợ</div>
+                  <div>Hoa tặng xếp</div>
+                  <div>Hoa tặng đồng nghiệp</div>
+                  <div>Tặng người yêu</div>
+                </div>
+              </div>
+
+              <div class="menu-item">Hoa Chia Buồn</div>
+              <div class="menu-item">Hoa cảm ơn</div>
+              <div class="menu-item">Hoa khai trương</div>
+              <div class="menu-item">Hoa ngày nhà giáo</div>
+              <div class="menu-item">Hoa ngày phụ nữ</div>
+              <div class="menu-item">Hoa tình yêu</div>
+            </div>
+          </div>
+          <div style="width: 30%; gap: 15px; line-height: 50px; display: flex">
+            <div>Trang chủ</div>
+            <div>Sản phẩm</div>
+            <div>Giới thiệu</div>
+            <div>Tin tức</div>
+            <div>Liên hệ</div>
+          </div>
+          <div style="width: 25%">
+            <a href="shopping_cart.html"> Giỏ hàng 🛒</a>
+          </div>
+        </div>
+      </div>
+      <div style="background: white; width: 400px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 40px; text-align: center; margin: 50px auto; font-family: Arial, sans-serif;">
+  <h2 style="color: #ff6600; margin-bottom: 30px;">ĐĂNG NHẬP</h2>
+
+  <form onsubmit="login(event)">
+    <label for="username" style="display: block; text-align: left; color: #444; font-weight: bold; margin-bottom: 5px;">Tên tài khoản hoặc địa chỉ email *</label>
+    <input
+      class="nhap"
+      type="text"
+      id="username"
+      required
+      placeholder="tên đăng nhập..."
+      style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 20px; font-size: 14px;"
+    />
+
+    <label for="password" style="display: block; text-align: left; color: #444; font-weight: bold; margin-bottom: 5px;">Mật khẩu *</label>
+    <input
+      class="nhap"
+      type="password"
+      id="password"
+      required
+      placeholder="mật khẩu..."
+      style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 10px; font-size: 14px;"
+    />
+
+    <p style="text-align: left; font-size: 14px; color: #555;">
+      <input type="checkbox" onclick="togglePassword()" style="margin-right: 5px;" />
+      <b>Hiện mật khẩu</b>
+    </p>
+
+    <button
+      type="submit"
+      class="cc"
+      style="width: 100%; background: #ff6600; color: white; font-size: 16px; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s;"
+      onmouseover="this.style.background='#ff6600'"
+      onmouseout="this.style.background='#ff6600'"
+    >
+      ĐĂNG NHẬP
+    </button>
+  </form>
+
+  <p style="color: #ff6600; margin-top: 20px; font-size: 14px;">
+    Bạn chưa có tài khoản?
+    <a href="taoTK.html" style="color: #ff6600; font-weight: bold; text-decoration: none;">Đăng ký</a>
+  </p>
+</div>
+
+<!-- <script>
+  function togglePassword() {
+    var x = document.getElementById("password");
+    x.type = x.type === "password" ? "text" : "password";
+  }
+
+  function login(e) {
+    e.preventDefault();
+    alert("Đăng nhập thành công (demo)!");
+  }
+</script> -->
+
+      <div class="c">
+        <img src="../anh/late1.png" alt="" />
+        <img src="../anh/late2.png" alt="" />
+        <img src="../anh/late3.png" alt="" />
+      </div>
+    <div style="background-color: white;height: 50px;"></div>
+    <div style="background-color: white">
+      <div class="last">
+        <div>
+          <b>Giới thiệu </b>
+          <p><a href="#">Về chúng tôi</a></p>
+          <p><a href="#">Hợp tác với chúng tôi</a></p>
+          <p><a href="#">Cơ hội nghề nghiệp</a></p>
+          <p><a href="#">Quy chế sàn giao dịch</a></p>
+          <p><a href="#">Các khuyến mãi đã bán</a></p>
+          <p><a href="#">Blog News</a></p>
+        </div>
+        <div>
+          <b>Chính sách công ty</b>
+          <p><a href="#">Hình thức đặt hàng</a></p>
+          <p><a href="#">Hình thức thanh toán</a></p>
+          <p><a href="#">Top10shophoa.com</a></p>
+          <p><a href="#">Phương thức vận chuyển</a></p>
+          <p><a href="#">Chính sách đổi trả hàng</a></p>
+          <p><a href="#">Hướng dẫn sử dụng</a></p>
+        </div>
+
+        <div class="item-b">
+          <b>Hotline liên hệ</b>
+
+          <div class="last-d">
+            <div><img src="../anh/DienThoai_last.png" alt="" /></div>
+            <div>
+              <b>092.3355.800</b>
+              <p>(Tất cả các ngày trong tuần)</p>
+            </div>
+          </div>
+          <br />
+          <b>Kết nối với chúng tôi</b>
+          <div><img src="../anh/last_KetNoi.png" alt="" /></div>
+          <br />
+          <b>Chứng nhận</b>
+
+          <div><img src="../anh/ChungNhan_Last.png" alt="" /></div>
+        </div>
+        <div class="item-c">
+          <b>Hệ thống hoa Xuân Thành</b>
+          <p>
+            <b>Hoa tươi Xuân Thành</b>
+            <span style="line-height: 25px;"
+              >là cửa hàng hoa chuyên cung cấp dịch vụ hoa tươi và điện hoa
+              online trên toàn quốc. Cửa hàng được thành lập tháng 10 năm 2015
+              và hoạt động cung cấp hoa gần 6 năm liên tiếp. Cửa hàng cung cấp
+              các dịch vụ khác nhau đáp ứng nhu cầu, mong muốn khác nhau của
+              người tiêu dùng. Về dịch vụ cung cấp sản phẩm hoa như hoa khai
+              trương, hoa sinh nhật, hoa tình yêu, hoa tang lễ… Ngoài ra, cửa
+              hàng còn cung cấp sản phẩm bánh sinh nhật, giỏ trái cây…</span
+            ></p>
+            <span></span>
+          </p>
+        </div>
+    </div>
+  </body>
+</html>

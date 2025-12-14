@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbox Tư vấn hoa 🌸</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .chatbox {
+        background: white;
+        width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+      }
+      .messages {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background: #f7f7f7;
+        margin-bottom: 10px;
+      }
+      .msg {
+        margin: 8px 0;
+        padding: 8px 12px;
+        border-radius: 10px;
+        max-width: 80%;
+      }
+      .bot {
+        background: #e3f2fd;
+        color: #333;
+        align-self: flex-start;
+      }
+      .user {
+        background: #4caf50;
+        color: white;
+        align-self: flex-end;
+        margin-left: auto;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      select,
+      input {
+        padding: 6px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #43a047;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chatbox">
+      <h2>Chatbox tư vấn hoa 🌸</h2>
+      <div id="messages" class="messages"></div>
+      <form id="flowerForm">
+        <label
+          >Tuổi: <input type="number" id="age" value="25" min="1" max="120"
+        /></label>
+        <label
+          >Sự kiện:
+          <select id="eventType">
+            <option>Sinh nhật</option>
+            <option>Kỷ niệm</option>
+            <option>Chúc mừng</option>
+            <option>Xin lỗi</option>
+            <option>Lãng mạn</option>
+            <option>Tặng thầy cô</option>
+            <option>Khác</option>
+          </select>
+        </label>
+        <label
+          >Màu ưa thích:
+          <select id="color">
+            <option>Hồng</option>
+            <option>Đỏ</option>
+            <option>Trắng</option>
+            <option>Pastel</option>
+            <option>Rực rỡ</option>
+          </select>
+        </label>
+        <label
+          >Phong cách:
+          <select id="style">
+            <option>Hiện đại</option>
+            <option>Cổ điển</option>
+            <option>Tối giản</option>
+          </select>
+        </label>
+        <label
+          >Ngân sách:
+          <select id="budget">
+            <option>Thấp</option>
+            <option>Trung bình</option>
+            <option>Cao</option>
+          </select>
+        </label>
+        <button type="submit">Tư vấn</button>
+        <button type="button" id="resetBtn">Làm lại</button>
+      </form>
+    </div>
+
+    <script>
+      const messagesDiv = document.getElementById("messages");
+      const form = document.getElementById("flowerForm");
+      const resetBtn = document.getElementById("resetBtn");
+
+      function addMessage(text, from = "bot") {
+        const div = document.createElement("div");
+        div.className = `msg ${from}`;
+        div.textContent = text;
+        messagesDiv.appendChild(div);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function generateSuggestion(age, eventType, prefs) {
+        // --- Phân loại tuổi ---
+        const ageGroup =
+          age < 18
+            ? "teen"
+            : age <= 30
+            ? "young"
+            : age <= 50
+            ? "adult"
+            : "senior";
+
+        // --- Gợi ý hoa theo sự kiện ---
+        const eventGuide = {
+          "Sinh nhật": {
+            flowers: ["Hoa hồng pastel", "Baby", "Tulip", "Hướng dương"],
+            tone: "vui tươi, rực rỡ",
+            card: "Chúc bạn thêm tuổi mới tràn đầy niềm vui và hạnh phúc!",
+          },
+          "Kỷ niệm": {
+            flowers: ["Hoa hồng đỏ", "Mẫu đơn", "Lan hồ điệp"],
+            tone: "lãng mạn, trang trọng",
+            card: "Cảm ơn vì đã luôn đồng hành. Chúc chúng ta còn nhiều kỷ niệm đẹp nữa!",
+          },
+          "Chúc mừng": {
+            flowers: ["Hướng dương", "Cẩm chướng", "Lily", "Lan"],
+            tone: "tự tin, mạnh mẽ",
+            card: "Chúc mừng bạn đạt được thành công xứng đáng!",
+          },
+          "Xin lỗi": {
+            flowers: ["Hồng kem", "Tulip trắng", "Lily trắng"],
+            tone: "nhẹ nhàng, chân thành",
+            card: "Mình thật sự xin lỗi. Mong được tha thứ.",
+          },
+          "Lãng mạn": {
+            flowers: ["Hồng đỏ", "Hồng Ecuador", "Tulip đỏ"],
+            tone: "nồng nàn, sâu sắc",
+            card: "Gửi tới người đặc biệt nhất trong trái tim mình.",
+          },
+          "Tặng thầy cô": {
+            flowers: ["Lan hồ điệp", "Hướng dương", "Cẩm chướng"],
+            tone: "tôn trọng, biết ơn",
+            card: "Chúc thầy/cô luôn mạnh khỏe và tràn đầy nhiệt huyết.",
+          },
+          Khác: {
+            flowers: ["Hoa hồng", "Baby", "Lily"],
+            tone: "nhã nhặn",
+            card: "Chúc bạn một ngày thật tuyệt vời!",
+          },
+        };
+
+        const event = eventGuide[eventType];
+
+        // --- Gợi ý theo tuổi ---
+        const ageTips = {
+          teen: "Tuổi teen phù hợp với các bó hoa dễ thương, màu pastel, kiểu dáng nhỏ gọn.",
+          young:
+            "Người trẻ ưa phong cách hiện đại, phá cách – phối nhiều màu hoặc hoa độc đáo.",
+          adult:
+            "Người trưởng thành thường thích sự tinh tế, sang trọng – lan, lily, mẫu đơn.",
+          senior:
+            "Người lớn tuổi hợp hoa trang nhã, nhẹ nhàng như lan trắng, cẩm chướng.",
+        };
+
+        // --- Gợi ý theo phong cách ---
+        const styleNote = {
+          "Hiện đại": "Bố cục tự do, phối màu trendy, giấy gói Hàn Quốc.",
+          "Cổ điển": "Thiết kế tròn, cân đối, tông trầm – ruy băng bản lớn.",
+          "Tối giản": "Bó gọn, ít chi tiết, giấy kraft hoặc giấy trắng tinh.",
+        };
+
+        // --- Gợi ý theo ngân sách ---
+        const budgetNote = {
+          Thấp: "Gợi ý: bó mini 200k – 350k.",
+          "Trung bình": "Gợi ý: bó size M đẹp chỉ 400k – 650k.",
+          Cao: "Gợi ý: bó cao cấp từ 800k – 1.5 triệu, rất sang trọng.",
+        };
+
+        // --- Màu sắc ưu tiên ---
+        const colorTone = `Màu chủ đạo khách thích: **${prefs.color}** – sẽ phối theo tone phù hợp.`;
+
+        // --- Tổng hợp gợi ý ---
+        const summary = `🌸 **Gợi ý bó hoa cho ${eventType.toLowerCase()}**:
+• Các loại phù hợp: **${event.flowers.join(", ")}**
+• Phong cách: **${event.tone}**
+• Màu sắc: ưu tiên tone **${prefs.color}**
+• Thiết kế: ${styleNote[prefs.style]}`;
+
+        // --- Chi tiết nâng cao ---
+        const details = `💡 **Phân tích theo tuổi:** ${ageTips[ageGroup]}
+
+💰 **Ngân sách:** ${budgetNote[prefs.budget]}
+
+💌 **Gợi ý thiệp nên ghi:**  
+"${event.card}"
+
+🌼 **Gợi ý mẫu thực tế phù hợp nhất:**
+- Một bó ${event.flowers[0]} phối với Baby trắng tạo cảm giác tinh tế.
+- Thêm chút lá bạc để tăng điểm sang trọng.
+- Gói theo phong cách ${prefs.style.toLowerCase()} giúp tôn hoa mà không bị rối.
+
+👉 Nếu muốn ấn tượng hơn, bạn có thể thêm:
+- Thiệp mini +20k
+- Hộp quà cao cấp +50k
+- Kèm chocolate nếu là tặng người yêu.`;
+
+        return { summary, details };
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const age = +document.getElementById("age").value;
+        const eventType = document.getElementById("eventType").value;
+        const prefs = {
+          color: document.getElementById("color").value,
+          style: document.getElementById("style").value,
+          budget: document.getElementById("budget").value,
+        };
+
+        addMessage(
+          `Tuổi: ${age}, Sự kiện: ${eventType}, Màu: ${prefs.color}, Phong cách: ${prefs.style}, Ngân sách: ${prefs.budget}`,
+          "user"
+        );
+        const result = generateSuggestion(age, eventType, prefs);
+
+        setTimeout(() => {
+          addMessage(result.summary, "bot");
+          addMessage(result.details, "bot");
+        }, 500);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        messagesDiv.innerHTML = "";
+        addMessage(
+          "Mình có thể gợi ý mẫu hoa theo tuổi, sở thích và sự kiện. Bạn muốn thử không?"
+        );
+      });
+
+      // Init chat
+      addMessage(
+        "Chào bạn! Mình có thể gợi ý mẫu hoa theo tuổi, sở thích và sự kiện. Bạn muốn bắt đầu chứ?"
+      );
+    </script>
+  </body>
+</html>

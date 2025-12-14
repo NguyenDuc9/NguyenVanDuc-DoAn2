@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoa - Shop Hoa Nguyễn Đức</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: #f9f9f9;
+      }
+      /* Sidebar */
+      .sidebar {
+        width: 230px;
+        background-color: #ff6600;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+      }
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .nav-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .nav-item:hover,
+      .active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      /* Content */
+      .content {
+        flex: 1;
+        padding: 30px;
+      }
+      h1 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+      input,
+      select,
+      textarea {
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+      }
+      textarea {
+        resize: none;
+        height: 60px;
+      }
+      button {
+        padding: 8px 14px;
+        margin-top: 8px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn-add {
+        background: #28a745;
+        color: white;
+      }
+      .btn-edit {
+        background: #007bff;
+        color: white;
+      }
+      .btn-delete {
+        background: #dc3545;
+        color: white;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #ff6600;
+        color: white;
+      }
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa<br />Nguyễn Đức</h2>
+
+      <div class="nav-item" onclick="navigate('mainPage.html')">
+        🏠 Trang chủ
+      </div>
+      <div class="nav-item" onclick="navigate('danhmuc.html')">
+        🌼 Danh mục hoa
+      </div>
+      <div class="nav-item active" onclick="navigate('hoa.html')">🌷 Hoa</div>
+      <div class="nav-item" onclick="navigate('khuyenmai.html')">
+        🎁 Khuyến mãi
+      </div>
+      <div class="nav-item" onclick="navigate('daban.html')">
+        💐 Sản phẩm đã bán
+      </div>
+      <div class="nav-item" onclick="navigate('donhang.html')">
+        🧾 Đơn đặt hàng
+      </div>
+      <div class="nav-item" onclick="navigate('thongTinKHachHang.html')">
+        👤 Khách hàng
+      </div>
+    </div>
+    <script>
+      function navigate(page) {
+        window.location.href = page;
+      }
+    </script>
+
+    <!-- Content -->
+    <div class="content">
+      <h1>Quản lý Hoa</h1>
+
+      <div class="form-section">
+        <select id="maDanhMuc"></select
+        ><br />
+        <input type="text" id="tenHoa" placeholder="Tên hoa..." /><br />
+        <textarea id="moTa" placeholder="Mô tả hoa..."></textarea><br />
+        <input type="text" id="imgHoa" placeholder="Link hình ảnh..." /><br />
+        <input type="number" id="giaBan" placeholder="Giá bán..." /><br />
+        <button class="btn-add" onclick="themHoa()">Thêm hoa</button>
+      </div>
+
+      <table id="bangHoa">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã hoa</th>
+            <th>Danh mục</th>
+            <th>Tên hoa</th>
+            <th>Mô tả</th>
+            <th>Ảnh</th>
+            <th>Giá bán</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      let danhMucList = JSON.parse(localStorage.getItem("danhMucList")) || [];
+      let hoaList = JSON.parse(localStorage.getItem("hoaList")) || [];
+
+      // Tạo mã hoa tự động
+      function taoMaHoaMoi() {
+        if (hoaList.length === 0) return "H001";
+        const maCu = hoaList[hoaList.length - 1].maHoa;
+        const so = parseInt(maCu.slice(1)) + 1;
+        return "H" + so.toString().padStart(3, "0");
+      }
+
+      // Hiển thị danh mục trong dropdown
+      function hienThiDanhMuc() {
+        const select = document.getElementById("maDanhMuc");
+        select.innerHTML = '<option value="">-- Chọn danh mục --</option>';
+        danhMucList.forEach((dm) => {
+          const opt = document.createElement("option");
+          opt.value = dm.ma;
+          opt.textContent = `${dm.ma} - ${dm.ten}`;
+          select.appendChild(opt);
+        });
+      }
+
+      function hienThiHoa() {
+        const tbody = document.querySelector("#bangHoa tbody");
+        tbody.innerHTML = "";
+        hoaList.forEach((h, index) => {
+          const dm = danhMucList.find((d) => d.ma === h.maDanhMuc);
+          const tenDM = dm ? dm.ten : "Không rõ";
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${h.maHoa}</td>
+          <td>${tenDM}</td>
+          <td>${h.ten}</td>
+          <td>${h.moTa}</td>
+          <td><img src="${h.img}" alt="hoa"></td>
+          <td>${h.giaBan.toLocaleString()} đ</td>
+          <td>
+            <button class="btn-edit" onclick="suaHoa(${index})">Sửa</button>
+            <button class="btn-delete" onclick="xoaHoa(${index})">Xóa</button>
+          </td>
+        `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function themHoa() {
+        const maDanhMuc = document.getElementById("maDanhMuc").value;
+        const ten = document.getElementById("tenHoa").value.trim();
+        const moTa = document.getElementById("moTa").value.trim();
+        const img = document.getElementById("imgHoa").value.trim();
+        const giaBan = parseFloat(document.getElementById("giaBan").value);
+
+        if (!maDanhMuc || !ten || isNaN(giaBan)) {
+          alert("Vui lòng nhập đầy đủ thông tin!");
+          return;
+        }
+
+        const maHoa = taoMaHoaMoi();
+        hoaList.push({ maHoa, maDanhMuc, ten, moTa, img, giaBan });
+        localStorage.setItem("hoaList", JSON.stringify(hoaList));
+
+        document.getElementById("tenHoa").value = "";
+        document.getElementById("moTa").value = "";
+        document.getElementById("imgHoa").value = "";
+        document.getElementById("giaBan").value = "";
+        hienThiHoa();
+      }
+
+      function suaHoa(index) {
+        const h = hoaList[index];
+        const tenMoi = prompt("Tên hoa mới:", h.ten);
+        const moTaMoi = prompt("Mô tả mới:", h.moTa);
+        const giaMoi = prompt("Giá bán mới:", h.giaBan);
+
+        if (tenMoi && tenMoi.trim() !== "") h.ten = tenMoi.trim();
+        if (moTaMoi && moTaMoi.trim() !== "") h.moTa = moTaMoi.trim();
+        if (giaMoi && !isNaN(parseFloat(giaMoi))) h.giaBan = parseFloat(giaMoi);
+
+        localStorage.setItem("hoaList", JSON.stringify(hoaList));
+        hienThiHoa();
+      }
+
+      function xoaHoa(index) {
+        if (confirm("Bạn có chắc muốn xóa hoa này?")) {
+          hoaList.splice(index, 1);
+          localStorage.setItem("hoaList", JSON.stringify(hoaList));
+          hienThiHoa();
+        }
+      }
+
+      hienThiDanhMuc();
+      hienThiHoa();
+    </script>
+  </body>
+</html>

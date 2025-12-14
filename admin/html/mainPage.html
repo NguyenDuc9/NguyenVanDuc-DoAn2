@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Shop Hoa Nguyễn Đức</title>
+    <link rel="stylesheet" href="../css/mainPage.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa Nguyễn Đức</h2>
+      <div class="nav-item active" data-page="mainPage.html">🏠 Trang chủ</div>
+      <div class="nav-item" data-page="danhmuc.html">🌼 Danh mục hoa</div>
+      <div class="nav-item" data-page="hoa.html">🌷 Hoa</div>
+      <div class="nav-item" data-page="khuyenmai.html">🎁 Khuyến mãi</div>
+      <div class="nav-item" data-page="daban.html">💐 Sản phẩm đã bán</div>
+      <div class="nav-item" data-page="donhang.html">🧾 Đơn đặt hàng</div>
+      <div class="nav-item" data-page="thongTinKHachHang.html">
+        👤 Khách hàng
+      </div>
+    </div>
+
+    <div class="main">
+      <header>
+        <h1>Bảng điều khiển (Dashboard)</h1>
+        <p>
+          Chào mừng bạn đến với hệ thống quản trị của
+          <strong
+            ><a href="../../khachHang/main_scren2.html"
+              >Shop Hoa Nguyễn Đức</a
+            ></strong
+          >
+          💐
+        </p>
+      </header>
+
+      <section class="stats">
+        <div class="card">
+          <h3>Tổng số hoa</h3>
+          <p id="totalHoa">0</p>
+        </div>
+        <div class="card">
+          <h3>Danh mục</h3>
+          <p id="totalDanhMuc">0</p>
+        </div>
+        <div class="card">
+          <h3>Đã bán</h3>
+          <p id="totalDaBan">0</p>
+        </div>
+        <div class="card">
+          <h3>Khuyến mãi</h3>
+          <p id="totalKM">0</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>© 2025 Shop Hoa Nguyễn Đức | Thiết kế bởi Đức Nguyễn 🌸</p>
+      </footer>
+    </div>
+
+    <script src="../js/mainPage.js"></script>
+    <div
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #4caf50;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 99999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      "
+    >
+      <!-- ICON MESSAGE -->
+      <a href="http://localhost:3000/admin.html"
+        ><div>
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            />
+          </svg></div
+      ></a>
+    </div>
+  </body>
+</html>

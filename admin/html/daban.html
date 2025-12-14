@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sản phẩm đã bán - Shop Hoa Nguyễn Đức</title>
+    <link rel="stylesheet" href="../css/daban.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: #f8f9fa;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 230px;
+        background: #ff6600;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+      }
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+      .nav-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .nav-item:hover,
+      .nav-item.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Content */
+      .content {
+        flex: 1;
+        padding: 30px;
+        background: #fff;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+      .search-box {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+      }
+      .search-box input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .search-box button {
+        background: #ff6600;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .search-box button:hover {
+        background: #e65c00;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #ff6600;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa<br />Nguyễn Đức</h2>
+
+      <div class="nav-item" onclick="navigate('mainPage.html')">
+        🏠 Trang chủ
+      </div>
+      <div class="nav-item" onclick="navigate('danhmuc.html')">
+        🌼 Danh mục hoa
+      </div>
+      <div class="nav-item" onclick="navigate('hoa.html')">🌷 Hoa</div>
+      <div class="nav-item" onclick="navigate('khuyenmai.html')">
+        🎁 Khuyến mãi
+      </div>
+      <div class="nav-item active" onclick="navigate('daban.html')">
+        💐 Sản phẩm đã bán
+      </div>
+      <div class="nav-item" onclick="navigate('donhang.html')">
+        🧾 Đơn đặt hàng
+      </div>
+      <div class="nav-item" onclick="navigate('thongTinKHachHang.html')">
+        👤 Khách hàng
+      </div>
+    </div>
+    <script>
+      function navigate(page) {
+        window.location.href = page;
+      }
+    </script>
+
+    <!-- Content -->
+    <div class="content">
+      <h1>Quản lý sản phẩm đã bán</h1>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Nhập tên hoa cần tìm..."
+        />
+        <button onclick="searchProduct()">Tìm kiếm</button>
+        <button onclick="resetSearch()">Hiển thị tất cả</button>
+      </div>
+
+      <table id="soldTable">
+        <thead>
+          <tr>
+            <th>Mã hoa</th>
+            <th>Tên hoa</th>
+            <th>Số lượng</th>
+            <th>Thành tiền (VNĐ)</th>
+            <th>Ngày bán</th>
+            <th>Mã khách hàng</th>
+          </tr>
+        </thead>
+
+        <tbody></tbody>
+      </table>
+      <h2>Biểu đồ doanh thu theo ngày</h2>
+      <canvas id="lineChart" width="600" height="300"></canvas>
+
+      <div class="statistics">
+        <h2>Thống kê tổng hợp</h2>
+        <p>Tổng số đơn: <span id="totalOrders"></span></p>
+        <p>Tổng số lượng: <span id="totalQuantity"></span></p>
+        <p>Tổng doanh thu: <span id="totalRevenue"></span> VNĐ</p>
+        <p>Hoa bán chạy nhất: <span id="bestSeller"></span></p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      // Chuyển trang không mở tab mới
+      function navigate(page) {
+        window.location.href = page;
+      }
+
+      const tableBody = document.querySelector("#soldTable tbody");
+      let soldList = JSON.parse(localStorage.getItem("soldList")) || [];
+
+      // Nếu chưa có dữ liệu -> tạo 5 bản ghi ảo
+      if (soldList.length <= 15) {
+        soldList = [
+          {
+            maHoa: "H001",
+            tenHoa: "Hoa Hồng Đỏ",
+            soLuong: 5,
+            thanhTien: 250000,
+            ngayBan: "2025-10-25",
+            maKH: "KH01",
+          },
+          {
+            maHoa: "H002",
+            tenHoa: "Hoa Cẩm Chướng",
+            soLuong: 3,
+            thanhTien: 150000,
+            ngayBan: "2025-10-26",
+            maKH: "KH01",
+          },
+          {
+            maHoa: "H003",
+            tenHoa: "Hoa Ly Trắng",
+            soLuong: 4,
+            thanhTien: 320000,
+            ngayBan: "2025-10-27",
+            maKH: "KH02",
+          },
+          {
+            maHoa: "H004",
+            tenHoa: "Hoa Tulip Vàng",
+            soLuong: 6,
+            thanhTien: 480000,
+            ngayBan: "2025-10-28",
+            maKH: "KH03",
+          },
+          {
+            maHoa: "H005",
+            tenHoa: "Hoa Cúc Họa Mi",
+            soLuong: 10,
+            thanhTien: 500000,
+            ngayBan: "2025-10-29",
+            maKH: "KH02",
+          },
+          {
+            maHoa: "H006",
+            tenHoa: "Hoa Lan Hồ Điệp",
+            soLuong: 2,
+            thanhTien: 300000,
+            ngayBan: "2025-10-30",
+            maKH: "KH06",
+          },
+          {
+            maHoa: "H007",
+            tenHoa: "Hoa Hướng Dương",
+            soLuong: 8,
+            thanhTien: 400000,
+            ngayBan: "2025-10-31",
+            maKH: "KH05",
+          },
+          {
+            maHoa: "H008",
+            tenHoa: "Hoa Mẫu Đơn",
+            soLuong: 1,
+            thanhTien: 180000,
+            ngayBan: "2025-11-01",
+            maKH: "KH04",
+          },
+          {
+            maHoa: "H009",
+            tenHoa: "Hoa Cẩm Tú Cầu",
+            soLuong: 5,
+            thanhTien: 350000,
+            ngayBan: "2025-11-02",
+            maKH: "KH03",
+          },
+          {
+            maHoa: "H010",
+            tenHoa: "Hoa Sen Hồng",
+            soLuong: 7,
+            thanhTien: 420000,
+            ngayBan: "2025-11-03",
+            maKH: "KH04",
+          },
+          {
+            maHoa: "H011",
+            tenHoa: "Hoa Đồng Tiền",
+            soLuong: 12,
+            thanhTien: 360000,
+            ngayBan: "2025-11-04",
+            maKH: "KH04",
+          },
+          {
+            maHoa: "H012",
+            tenHoa: "Hoa Phong Lan Trắng",
+            soLuong: 3,
+            thanhTien: 270000,
+            ngayBan: "2025-11-05",
+            maKH: "KH07",
+          },
+          {
+            maHoa: "H013",
+            tenHoa: "Hoa Baby Trắng",
+            soLuong: 9,
+            thanhTien: 330000,
+            ngayBan: "2025-11-06",
+            maKH: "KH08",
+          },
+          {
+            maHoa: "H014",
+            tenHoa: "Hoa Hồng Tím",
+            soLuong: 4,
+            thanhTien: 280000,
+            ngayBan: "2025-11-07",
+            maKH: "KH08",
+          },
+          {
+            maHoa: "H015",
+            tenHoa: "Hoa Ly Hồng",
+            soLuong: 6,
+            thanhTien: 450000,
+            ngayBan: "2025-11-08",
+            maKH: "KH08",
+          },
+          {
+            maHoa: "H015",
+            tenHoa: "Hoa Ly Hồng",
+            soLuong: 6,
+            thanhTien: 450000,
+            ngayBan: "2025-11-08",
+            maKH: "KH08",
+          },
+        ];
+        localStorage.setItem("soldList", JSON.stringify(soldList));
+      }
+
+      function renderTable(list = soldList) {
+        tableBody.innerHTML = "";
+        list.forEach((item) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+          <td>${item.maHoa}</td>
+          <td>${item.tenHoa}</td>
+          <td>${item.soLuong}</td>
+          <td>${item.thanhTien.toLocaleString()}</td>
+          <td>${item.ngayBan}</td>
+          <td>${item.maKH}</td>
+        `;
+          tableBody.appendChild(row);
+        });
+      }
+
+      // --- Tìm kiếm ---
+      function searchProduct() {
+        const keyword = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const filtered = soldList.filter((p) =>
+          p.tenHoa.toLowerCase().includes(keyword)
+        );
+        renderTable(filtered);
+      }
+
+      function resetSearch() {
+        document.getElementById("searchInput").value = "";
+        renderTable();
+      }
+
+      renderTable();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let soldList = JSON.parse(localStorage.getItem("soldList")) || [];
+
+        if (soldList.length === 0) {
+          alert("Không có dữ liệu để vẽ biểu đồ");
+          return;
+        }
+
+        let totalOrders = soldList.length;
+        let totalQuantity = 0;
+        let totalRevenue = 0;
+
+        const revenueByDate = {};
+        const quantityByFlower = {};
+
+        soldList.forEach((item) => {
+          totalQuantity += item.soLuong;
+          totalRevenue += item.thanhTien;
+
+          revenueByDate[item.ngayBan] =
+            (revenueByDate[item.ngayBan] || 0) + item.thanhTien;
+
+          quantityByFlower[item.tenHoa] =
+            (quantityByFlower[item.tenHoa] || 0) + item.soLuong;
+        });
+
+        // Hoa bán chạy nhất
+        const bestSeller = Object.entries(quantityByFlower).sort(
+          (a, b) => b[1] - a[1]
+        )[0];
+
+        // Hiển thị thống kê
+        document.getElementById("totalOrders").innerText = totalOrders;
+        document.getElementById("totalQuantity").innerText = totalQuantity;
+        document.getElementById("totalRevenue").innerText =
+          totalRevenue.toLocaleString();
+        document.getElementById("bestSeller").innerText =
+          bestSeller[0] + " (" + bestSeller[1] + ")";
+
+        // Vẽ biểu đồ
+        const ctx = document.getElementById("lineChart").getContext("2d");
+
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: Object.keys(revenueByDate),
+            datasets: [
+              {
+                label: "Doanh thu (VNĐ)",
+                data: Object.values(revenueByDate),
+                tension: 0.3,
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true },
+            },
+          },
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
+</html>

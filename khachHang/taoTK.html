@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đăng ký</title>
+    <script>
+      function register(event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const confirm = document.getElementById("confirm-password").value;
+
+        if (password !== confirm) {
+          alert("Mật khẩu không khớp!");
+          return;
+        }
+
+        // Lưu vào localStorage
+        localStorage.setItem("user", JSON.stringify({ username, password }));
+        alert("Đăng ký thành công!");
+        window.location.href = "login.html";
+      }
+    </script>
+    <link rel="stylesheet" href="../CSS/screen1.css" />
+    <link rel="stylesheet" href="../CSS/screen2.css" />
+    <link rel="stylesheet" href="../CSS/Login_user.css" />
+  </head>
+  <body>
+    <div>
+      <div style="background-color: white">
+        <div class="head1">
+          <div style="width: 50%" class="a">
+            <a href="main_screen1.html"
+              >Tiệm hoa Xuân Thành - Uy tín - Chuyên nghiệp - Phục vụ 24/7</a
+            >
+          </div>
+          <div style="width: 10%"></div>
+          <div style="width: 30%" class="head1 hide-on-mobile">
+            <div>
+              <div class="menu-login">
+                <div class="menu-button">Tài khoản</div>
+                <ul class="dropdown">
+                  <li><a href="Login.html">Đăng nhập</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>Sản phẩm</div>
+            <div>Hệ thống cửa hàng</div>
+          </div>
+        </div>
+        <div class="head2" style="background-color: white">
+          <div>
+            <img src="../anh/shopXuanThanh.png" alt="" />
+          </div>
+          <div class="search-box" style="margin-top: 15px">
+            <select>
+              <option>Chọn danh mục...</option>
+              <option>Hoa cưới</option>
+              <option>Hoa sinh nhật</option>
+              <option>Hoa cảm ơn</option>
+            </select>
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <button>🔍</button>
+          </div>
+          <div style="width: 20px"></div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Gọi Điện</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Liên hệ zalo</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="head1 hide-on-mobile" style="height: 50px; line-height: 50px">
+        <div style="margin-left: 12%; width: 27.5%">
+          <div class="menu-container">
+            <!-- <i class="fas fa-bars"></i> -->
+            <div class="menu-title">
+              <p style="margin-top: -10px">&#9776; Danh mục sản phẩm</p>
+            </div>
+          </div>
+
+          <!-- Sidebar menu -->
+          <div class="sidebar">
+            <div class="menu-item">
+              Khuyến mãi gốc <span class="hot">HOT</span>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa Tươi ▸</span>
+              <div class="submenu">
+                <div>Hoa cẩm chướng</div>
+                <div>Hoa cẩm tú cầu</div>
+                <div>Hoa cát tường</div>
+                <div>Hoa đồng tiền</div>
+                <div>Hoa hồng</div>
+                <div>Hoa Hướng dương</div>
+                <div>Hoa lan</div>
+                <div>Hoa ly</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Kiểu dáng ▸</span>
+              <div class="submenu">
+                <div>Giỏ hoa</div>
+                <div>Bình hoa</div>
+                <div>Bó hoa</div>
+                <div>Hoa hộp gỗ</div>
+                <div>Kệ hoa khai</div>
+                <div>Lãng hoa</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa sinh nhật ▸</span>
+              <div class="submenu">
+                <div>Tặng sinh nhật bạnbạn</div>
+                <div>Hoa tặng vợ</div>
+                <div>Hoa tặng xếp</div>
+                <div>Hoa tặng đồng nghiệp</div>
+                <div>Tặng người yêu</div>
+              </div>
+            </div>
+
+            <div class="menu-item">Hoa Chia Buồn</div>
+            <div class="menu-item">Hoa cảm ơn</div>
+            <div class="menu-item">Hoa khai trương</div>
+            <div class="menu-item">Hoa ngày nhà giáo</div>
+            <div class="menu-item">Hoa ngày phụ nữ</div>
+            <div class="menu-item">Hoa tình yêu</div>
+          </div>
+        </div>
+        <div style="width: 30%; gap: 15px; line-height: 50px; display: flex">
+          <div>Trang chủ</div>
+          <div>Sản phẩm</div>
+          <div>Giới thiệu</div>
+          <div>Tin tức</div>
+          <div>Liên hệ</div>
+        </div>
+        <div style="width: 25%">
+          <a href="shopping_cart.html"> Giỏ hàng 🛒</a>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        background: white;
+        width: 400px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        text-align: center;
+        margin: 50px auto;
+        font-family: Arial, sans-serif;
+      "
+    >
+      <h2 style="color: #ff6600; margin-bottom: 30px">ĐĂNG KÝ TÀI KHOẢN</h2>
+
+      <form onsubmit="register(event)">
+        <label
+          for="username"
+          style="
+            display: block;
+            text-align: left;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 5px;
+          "
+          >Tên đăng nhập:</label
+        >
+        <input
+          class="nhap"
+          type="text"
+          id="username"
+          required
+          placeholder="Tên đăng nhập của bạn..."
+          style="
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 14px;
+          "
+        />
+
+        <label
+          for="password"
+          style="
+            display: block;
+            text-align: left;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 5px;
+          "
+          >Mật khẩu:</label
+        >
+        <input
+          class="nhap"
+          type="password"
+          id="password"
+          required
+          placeholder="Mật khẩu của bạn..."
+          style="
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 14px;
+          "
+        />
+
+        <label
+          for="confirm-password"
+          style="
+            display: block;
+            text-align: left;
+            color: #444;
+            font-weight: bold;
+            margin-bottom: 5px;
+          "
+          >Xác nhận mật khẩu:</label
+        >
+        <input
+          class="nhap"
+          type="password"
+          id="confirm-password"
+          required
+          placeholder="Nhập lại mật khẩu..."
+          style="
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 14px;
+          "
+        />
+
+        <button
+          class="cc"
+          type="submit"
+          style="
+            width: 100%;
+            background: #ff6600;
+            color: white;
+            font-size: 16px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+          "
+          onmouseover="this.style.background='#ff8533'"
+          onmouseout="this.style.background='#ff6600'"
+        >
+          Đăng ký
+        </button>
+      </form>
+
+      <p style="color: #ff6600; margin-top: 20px; font-size: 14px">
+        Đã có tài khoản?
+        <a
+          href="login.html"
+          style="color: #ff6600; font-weight: bold; text-decoration: none"
+          >Đăng nhập</a
+        >
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý khuyến mãi - Shop Hoa Nguyễn Đức</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: #f8f9fa;
+      }
+
+      /* Sidebar (Dashboard) */
+      .sidebar {
+        width: 230px;
+        background: #ff6600;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+      }
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+      .nav-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .nav-item:hover,
+      .nav-item.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Content */
+      .content {
+        flex: 1;
+        padding: 30px;
+        background: #fff;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+
+      form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background: #ff6600;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+      button:hover {
+        background: #e65c00;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #ff6600;
+        color: #fff;
+      }
+      .actions button {
+        margin-right: 5px;
+        padding: 5px 10px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa<br />Nguyễn Đức</h2>
+
+      <div class="nav-item" onclick="navigate('mainPage.html')">
+        🏠 Trang chủ
+      </div>
+      <div class="nav-item" onclick="navigate('danhmuc.html')">
+        🌼 Danh mục hoa
+      </div>
+      <div class="nav-item" onclick="navigate('hoa.html')">🌷 Hoa</div>
+      <div class="nav-item active" onclick="navigate('khuyenmai.html')">
+        🎁 Khuyến mãi
+      </div>
+      <div class="nav-item" onclick="navigate('daban.html')">
+        💐 Sản phẩm đã bán
+      </div>
+      <div class="nav-item" onclick="navigate('donhang.html')">
+        🧾 Đơn đặt hàng
+      </div>
+      <div class="nav-item" onclick="navigate('thongTinKHachHang.html')">
+        👤 Khách hàng
+      </div>
+    </div>
+    <script>
+      function navigate(page) {
+        window.location.href = page;
+      }
+    </script>
+
+    <!-- Content -->
+    <div class="content">
+      <h1>Quản lý khuyến mãi</h1>
+
+      <form id="promoForm">
+        <label for="maHoa">Mã hoa:</label>
+        <select id="maHoa" required>
+          <option value="">-- Chọn mã hoa --</option>
+        </select>
+
+        <label for="heSo">Hệ số khuyến mãi (%):</label>
+        <input type="number" id="heSo" min="0" max="100" required />
+
+        <label for="ngayBD">Ngày bắt đầu:</label>
+        <input type="date" id="ngayBD" required />
+
+        <label for="ngayKT">Ngày kết thúc:</label>
+        <input type="date" id="ngayKT" required />
+
+        <button type="submit">Thêm khuyến mãi</button>
+      </form>
+
+      <table id="promoTable">
+        <thead>
+          <tr>
+            <th>Mã KM</th>
+            <th>Mã Hoa</th>
+            <th>Hệ số KM (%)</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Chuyển trang mà không mở tab mới
+      function navigate(page) {
+        window.location.href = page;
+      }
+
+      // --- Sinh mã tự động ---
+      function generateMaKM() {
+        return "KM" + Date.now().toString().slice(-5);
+      }
+
+      // --- Lấy danh sách hoa từ localStorage ---
+      const flowerList = JSON.parse(localStorage.getItem("hoaList")) || [];
+      const maHoaSelect = document.getElementById("maHoa");
+      flowerList.forEach((f) => {
+        const option = document.createElement("option");
+        option.value = f.maHoa;
+        option.textContent = `${f.maHoa} - ${f.ten}`;
+        maHoaSelect.appendChild(option);
+      });
+
+      // --- Quản lý khuyến mãi ---
+      const promoForm = document.getElementById("promoForm");
+      const promoTableBody = document.querySelector("#promoTable tbody");
+      let promoList = JSON.parse(localStorage.getItem("khuyenMaiList")) || [];
+
+      function renderTable() {
+        promoTableBody.innerHTML = "";
+        promoList.forEach((km, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+          <td>${km.maKM}</td>
+          <td>${km.maHoa}</td>
+          <td>${km.heSo}%</td>
+          <td>${km.ngayBD}</td>
+          <td>${km.ngayKT}</td>
+          <td class="actions">
+            <button onclick="editPromo(${index})">Sửa</button>
+            <button onclick="deletePromo(${index})">Xóa</button>
+          </td>
+        `;
+          promoTableBody.appendChild(row);
+        });
+      }
+
+      promoForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const newKM = {
+          maKM: generateMaKM(),
+          maHoa: maHoaSelect.value,
+          heSo: heSo.value,
+          ngayBD: ngayBD.value,
+          ngayKT: ngayKT.value,
+        };
+        promoList.push(newKM);
+        localStorage.setItem("khuyenMaiList", JSON.stringify(promoList));
+        renderTable();
+        promoForm.reset();
+      });
+
+      function deletePromo(index) {
+        if (confirm("Xóa khuyến mãi này?")) {
+          promoList.splice(index, 1);
+          localStorage.setItem("khuyenMaiList", JSON.stringify(promoList));
+          renderTable();
+        }
+      }
+
+      function editPromo(index) {
+        const km = promoList[index];
+        maHoaSelect.value = km.maHoa;
+        heSo.value = km.heSo;
+        ngayBD.value = km.ngayBD;
+        ngayKT.value = km.ngayKT;
+        promoList.splice(index, 1);
+        localStorage.setItem("khuyenMaiList", JSON.stringify(promoList));
+        renderTable();
+      }
+
+      renderTable();
+    </script>
+  </body>
+</html>

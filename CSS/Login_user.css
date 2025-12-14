@@ -1,0 +1,29 @@
+.aa1 {
+  max-width: 1150px;
+
+  margin-top: 0%;
+  margin-left: 12%;
+  background-color: white;
+}
+
+.nhap {
+  width: 1050px;
+  height: 40px;
+
+  border: 1px solid rgba(0, 0, 0, 0.151);
+}
+.nhap:hover {
+  cursor: pointer;
+}
+
+.cc {
+  color: white;
+  background-color: orange;
+  width: 140px;
+  border-radius: 3px;
+  height: 40px;
+  border: orange;
+}
+.cc:hover {
+  background-color: chocolate;
+}

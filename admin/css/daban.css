@@ -1,0 +1,64 @@
+/* ===== TIÊU ĐỀ ===== */
+h2 {
+  margin: 20px 0 12px;
+  color: #2f855a;
+  font-weight: 600;
+}
+
+/* ===== BIỂU ĐỒ ===== */
+#lineChart {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  display: block;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== KHỐI THỐNG KÊ ===== */
+.statistics {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  background: #f0fff4;
+  border-radius: 12px;
+  padding: 20px 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.statistics h2 {
+  color: #276749;
+  margin-bottom: 15px;
+}
+
+/* ===== DÒNG THỐNG KÊ ===== */
+.statistics p {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  margin: 0;
+  font-size: 16px;
+  border-bottom: 1px dashed #c6f6d5;
+}
+
+.statistics p:last-child {
+  border-bottom: none;
+}
+
+.statistics span {
+  font-weight: 600;
+  color: #22543d;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #lineChart,
+  .statistics {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .statistics p {
+    font-size: 14px;
+  }
+}

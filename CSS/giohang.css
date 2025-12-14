@@ -1,0 +1,26 @@
+.giohangcss {
+  background-color: #f9f9f9;
+}
+.giohangcss table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.giohangcss th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.giohangcss button {
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+.cart-details {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 5px;
+  display: none;
+}

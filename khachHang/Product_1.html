@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/product_1.css" />
+    <link rel="stylesheet" href="../CSS/screen1.css" />
+    <link rel="stylesheet" href="../CSS/screen2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+    <div>
+      <div style="background-color: white">
+        <div class="head1">
+          <div style="width: 50%" class="a">
+            <a href="main_screen1.html">Tiệm hoa Xuân Thành - Uy tín - Chuyên nghiệp - Phục vụ 24/7</a>
+          </div>
+          <div style="width: 10%"></div>
+          <div style="width: 30%" class="head1 hide-on-mobile">
+            <div><a href="#">Đăng xuất</a></div>
+            <div>Sản phẩm</div>
+            <div>Hệ thống cửa hàng</div>
+          </div>
+        </div>
+        <div class="head2" style="background-color: white">
+          <div>
+           <a href="main_screen1.html"> <img src="../anh/shopXuanThanh.png" alt="" /></a>
+          </div>
+          <div class="search-box" style="margin-top: 15px">
+            <!-- <select>
+              <option>Chọn danh mục...</option>
+              <option>Hoa hiếu</option>
+              <option>Hoa hỉ</option>
+              <option>Hoa chúc mừng</option>
+            </select> -->
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <!-- <button>🔍</button> -->
+          </div>
+          <div style="width: 20px"></div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Gọi Điện</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Liên hệ zalo</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="head1 hide-on-mobile" style="height: 50px; line-height: 50px">
+        <div style="margin-left: 12%; width: 27.5%">
+          <div class="menu-container">
+            <!-- <i class="fas fa-bars"></i> -->
+            <div class="menu-title">&#9776; Danh mục sản phẩm</div>
+          </div>
+
+          <!-- Sidebar menu -->
+          <div class="sidebar">
+            <div class="menu-item">
+              Khuyến mãi gốc <span class="hot">HOT</span>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa Tươi ▸</span>
+              <div class="submenu">
+                <div>Hoa cẩm chướng</div>
+                <div>Hoa cẩm tú cầu</div>
+                <div>Hoa cát tường</div>
+                <div>Hoa đồng tiền</div>
+                <div>Hoa hồng</div>
+                <div>Hoa Hướng dương</div>
+                <div>Hoa lan</div>
+                <div>Hoa ly</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Kiểu dáng ▸</span>
+              <div class="submenu">
+                <div>Giỏ hoa</div>
+                <div>Bình hoa</div>
+                <div>Bó hoa</div>
+                <div>Hoa hộp gỗ</div>
+                <div>Kệ hoa khai</div>
+                <div>Lãng hoa</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa sinh nhật ▸</span>
+              <div class="submenu">
+                <div>Tặng sinh nhật bạn</div>
+                <div>Hoa tặng vợ</div>
+                <div>Hoa tặng xếp</div>
+                <div>Hoa tặng đồng nghiệp</div>
+                <div>Tặng người yêu</div>
+              </div>
+            </div>
+
+            <div class="menu-item">Hoa Chia Buồn</div>
+            <div class="menu-item">Hoa cảm ơn</div>
+            <div class="menu-item">Hoa khai trương</div>
+            <div class="menu-item">Hoa ngày nhà giáo</div>
+            <div class="menu-item">Hoa ngày phụ nữ</div>
+            <div class="menu-item">Hoa tình yêu</div>
+          </div>
+        </div>
+        <div style="width: 30%; gap: 15px; line-height: 50px; display: flex">
+          <div>Trang chủ</div>
+          <div>Sản phẩm</div>
+          <div>Giới thiệu</div>
+          <div>Tin tức</div>
+          <div>Liên hệ</div>
+        </div>
+        <div style="width: 25%">
+          <a href="shopping_cart.html">🛒 Giỏ hàng</a>
+        </div>
+      </div>
+    </div>
+    <br />
+    
+    <div class="headd">
+      <div  class="gridd">
+       
+  <div>
+  <div id="product-detail"
+       style="display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 40px;
+              align-items: center;
+              background: white;
+              padding: 40px;
+              border-radius: 15px;
+              box-shadow: 0 0 15px rgba(241, 155, 93, 0.3);
+              max-width: 900px;
+              margin: 40px auto;
+              font-family: 'Segoe UI', Tahoma, sans-serif;">
+  </div>
+</div>
+
+<script>
+  // Lấy ID từ URL
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+
+  // Danh sách sản phẩm
+  const products = [
+{
+  id: 1,
+  name: "Hoa hồng đỏ",
+  price: 120000,
+  image: "../anh/HoaQC.png",
+  description: "Hoa hồng đỏ tượng trưng cho tình yêu nồng nàn và sự lãng mạn.",
+},
+{
+  id: 2,
+  name: "Hoa hướng dương",
+  price: 95000,
+  image: "../anh/HoaQC1.png",
+  description: "Hoa hướng dương mang ý nghĩa của sự hy vọng, tích cực và luôn hướng về phía mặt trời.",
+},
+{
+  id: 3,
+  name: "Hoa tulip",
+  price: 150000,
+  image: "../anh/HoaQC2.png",
+  description: "Hoa tulip biểu tượng cho sự thanh lịch, tinh tế và tình yêu hoàn hảo.",
+},
+{
+  id: 4,
+  name: "Hoa ly trắng",
+  price: 180000,
+  image: "../anh/HoaQC3.png",
+  description: "Hoa ly trắng mang vẻ đẹp tinh khôi, thuần khiết và sang trọng.",
+},
+{
+  id: 5,
+  name: "Hoa lan hồ điệp",
+  price: 250000,
+  image: "../anh/HoaQC4.png",
+  description: "Lan hồ điệp tượng trưng cho sự quý phái, sang trọng và may mắn.",
+},
+{
+  id: 6,
+  name: "Hoa cẩm chướng",
+  price: 90000,
+  image: "../anh/HoaQC5.png",
+  description: "Hoa cẩm chướng đại diện cho tình cảm bền lâu và sự biết ơn.",
+},
+{
+  id: 7,
+  name: "Hoa baby",
+  price: 80000,
+  image: "../anh/HoaQC6.png",
+  description: "Hoa baby tượng trưng cho sự nhẹ nhàng, thuần khiết và trong sáng.",
+},
+{
+  id: 8,
+  name: "Hoa đồng tiền",
+  price: 70000,
+  image: "../anh/HoaQC7.png",
+  description: "Hoa đồng tiền biểu tượng cho tài lộc, may mắn và niềm vui.",
+},
+{
+  id: 9,
+  name: "Hoa sen",
+  price: 160000,
+  image: "../anh/HoaQC8.png",
+  description: "Hoa sen đại diện cho vẻ đẹp thuần khiết, cao quý và sự tái sinh.",
+},
+
+  ];
+
+  // Lưu danh sách vào localStorage nếu chưa có
+  if (!localStorage.getItem("products")) {
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+
+  const product = products.find(p => p.id === id);
+
+  // Hàm thêm vào giỏ hàng
+  function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Kiểm tra nếu sản phẩm đã có trong giỏ -> tăng số lượng
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("🛒 Đã thêm vào giỏ hàng!");
+  }
+
+  if (product) {
+    document.getElementById("product-detail").innerHTML = `
+      <div style="text-align: center;">
+        <img src="${product.image}"
+             alt="${product.name}"
+             style="width: 100%;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(241, 155, 93, 0.2);" />
+      </div>
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="font-size: 28px; color: #e26b0a; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-spa" style="color:#e26b0a;"></i> 
+          ${product.name}
+        </h2>
+        <p style="font-size: 20px; color: red; font-weight: bold; margin-bottom: 15px;">
+          Giá: ${product.price.toLocaleString()} đ
+        </p>
+
+        <button onclick='addToCart(${JSON.stringify(product)})'
+            style="
+              background-color: #f19b5d;
+              color: white;
+              border: none;
+              padding: 12px 24px;
+              border-radius: 10px;
+              font-size: 16px;
+              cursor: pointer;
+              width: fit-content;
+              transition: 0.3s;
+              box-shadow: 0 0 5px rgba(0,0,0,0.1);
+              margin-bottom: 15px;"
+            onmouseover="this.style.backgroundColor='#e26b0a'"
+            onmouseout="this.style.backgroundColor='#f19b5d'">
+          <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
+        </button>
+
+        <p style="font-size: 16px; color: #555; line-height: 1.6; text-align: justify; max-width: 400px;">
+          ${product.description}
+        </p>
+      </div>
+    `;
+  } else {
+    document.getElementById("product-detail").innerText = "Không tìm thấy sản phẩm.";
+  }
+</script>
+
+
+            
+         
+          <!-- <button
+            onclick="addToCart('SP001', 'Hoa Ly', 100000, '../anh/product_1.png')"
+            class="a"
+          >
+            Thêm vào giỏ hàng
+          </button> -->
+          <!-- <script src="main_screen.js"></script>
+          <a href="donhang.html"> xem đơn hàng</a>
+        </div> -->
+        
+        <div>
+          <br>
+          <br>
+          <div class="gridd1">
+            <div><img src="../anh/product_5.png" alt="" /></div>
+            <div>
+              <b>giao hàng nhanh chóng</b>
+              <p>chỉ trong 24h</p>
+            </div>
+          </div>
+          <div class="gridd1">
+            <div><img src="../anh/product_4.png" alt="" /></div>
+            <div>
+              <b>Sản phẩm chính hãng</b>
+              <p>sản xuất nhập khẩu 100%</p>
+            </div>
+          </div>
+          <div class="gridd1">
+            <div><img src="../anh/product_3.png" alt="" /></div>
+            <div>
+              <b>Mua hàng tích kiệm</b>
+              <p>rẻ hơn 10% - 30%</p>
+            </div>
+          </div>
+          <div class="gridd1">
+            <div><img src="../anh/product_2.png" alt="" /></div>
+            <div>
+              <b>Hotline mua hàng</b>
+              <p>092.3355.800</p>
+            </div>
+          </div>
+          <br />
+          
+        </div>
+     
+      
+    </div>
+      <div class="gridd2">
+        
+          <div class="tab active">Mô tả</div>
+         
+        
+      </div>
+
+      <div class="tab-content active">
+        <div class="gridd2">
+          <div style="height: 650px">
+            <p>
+              Những mẫu hoa chúc mừng sinh nhật đẹp, hàm chứa nhiều ý nghĩa,
+              giúp truyền tải thông điệp yêu thương một cách hiệu quả khiến
+              người nhận cực kì vui thích và hãnh diện. Bao gồm: hoa sinh nhật
+              người yêu, hoa chúc mừng sinh nhật vợ, hoa chúc mừng sinh nhật bố
+              mẹ, hoa sinh nhật bạn bè, đối tác, hoa chúc mừng sinh nhật ông bà,
+              hoa chúc mừng sinh nhật sếp …
+            </p>
+            <p><b>Bí quyết tặng hoa sinh nhật thật bất ngờ, ấn tượng</b></p>
+            <p>
+              Nếu là mẹ: tốt nhất bạn nên tặng ở nhà, bạn có thể dành một buổi
+              đi làm về sớm hơn thường lệ để tặng hoa sinh nhật cho mẹ và cả gia
+              đình sẽ cùng nhau quay quần bên bữa ăn ấm áp.
+            </p>
+            <p>
+              Nếu là vợ: bạn có thể dành bất ngờ cho nàng bằng cách đi làm về
+              sớm nấu một bữa ăn ngon để đợi nàng về và tặng hoa sinh nhật cho
+              vợ. Ngoài ra bạn còn có thể đặt bí mật một buổi tối tại nhà hàng
+              cũng như gửi hoa đến cơ quan để tặng nàng.
+            </p>
+            <p>
+              Nếu là người yêu: bạn có thể tặng hoa chúc mừng sinh nhật bất ngờ
+              cho người ấy bằng dịch vụ điện hoa, điều này còn làm cho nàng cảm
+              thấy vô cùng hãnh diện với bạn bè đồng nghiệp vì sự tâm lý của
+              người yêu. Còn nếu như cô nàng của bạn không thích phô trương thì
+              bạn có thể nấu một bữa ăn lãng mạn chỉ có hai người và đừng quên
+              tặng kèm cho nàng một bó hoa sinh nhật để tăng thêm sự mới lạ và
+              độc đáo cho nàng.
+            </p>
+            <p>
+              Nếu là bạn bè: thì bạn có thể tặng hoa mừng sinh nhật khi đến dự
+              sinh nhật tại nhà của bạn bè, tại cơ quan, tại nhà hàng…
+            </p>
+            <p>....</p>
+            <p>
+              Dưới bàn tay khéo léo, giàu kinh nghiệm của người nghệ nhân hoa
+              tươi tại shop Hoa Xuân Thành, các sản phẩm hoa được trang trí khá
+              kỳ công và khéo léo với nhiều kiểu dáng khác nhau, mang đến cho
+              bạn sự lựa chọn đa dạng, gây ấn tượng ngay với người thương!
+            </p>
+            <p>
+              Đến với Hoa Xuân Thành, bạn sẽ hoàn toàn yên tâm không lo hoa héo,
+              hoa cũ, hoa giao trễ giờ, sai kế hoạch tặng hoa của bạn vì mọi thứ
+              đều được chúng tôi chuẩn bị tận tâm như người nhà – hoàn hảo trong
+              từng công đoạn.
+            </p>
+            <p>
+              Hoa Xuân Thành luôn cân nhắc rất kỹ lưỡng từ hình thức đến giá
+              thành, với mong muốn mang đến cho quý khách hàng những giá trị
+              dịch vụ hoa tươi cao cấp nhất.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    
+      
+      <h3 style="margin-left: -20%;">SẢN PHẨM TƯƠNG TỰ</h3>
+<div style="position: relative; overflow: hidden; margin-right: 22%; " class="carousel-container" >
+  <div id="carouselTrack" style="display: flex; transition: transform 0.5s ease;margin-left: 20px;"  >
+    <!-- Slide 1 -->
+    <div class="gridd2" style="min-width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; ">
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>XT HSN 935</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>XT HSN 935</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>XT HSN 935</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>XT HSN 935</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="gridd2" style="min-width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px;">
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>SP Mới 1</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>SP Mới 2</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>SP Mới 3</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+      <div>
+        <img src="../anh/hoa-1.png" alt="" />
+        <p>SP Mới 4</p>
+        <p><b>Liên hệ</b></p>
+        <button>Đọc tiếp</button>
+      </div>
+    </div>
+    <!-- Nút điều khiển -->
+
+  </div>
+  <div style="text-align: center; margin-top: 10px;">
+  <button onclick="moveSlide(-1)" class="edit-button1">&#10094;</button>
+  <button onclick="moveSlide(1)" class="edit-button2">&#10095;</button>
+</div>
+</div>
+
+
+
+<script>
+  let currentIndex = 0;
+  const track = document.getElementById("carouselTrack");
+  const totalSlides = 2; // 2 trang
+
+  function moveSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex >= totalSlides) currentIndex = totalSlides - 1;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+</script>
+
+
+
+    </div>
+    
+    <div>
+      <br>
+      <br><div class="c">
+      <img src="../anh/late1.png" alt="" />
+      <img src="../anh/late2.png" alt="" />
+      <img src="../anh/late3.png" alt="" />
+    </div>
+    <div class="hidden-on-desktop">
+      <p
+        style="
+          height: 50px;
+          color: aliceblue;
+          background-color: green;
+          text-align: center;
+          line-height: 50px;
+          font-size: 25px;
+        "
+      >
+        Gọi ngay: 0123456789
+      </p>
+    </div>
+    <div style="background-color: white;height: 50px;"></div>
+    <div style="background-color: white">
+      <div class="last">
+        <div>
+          <b>Giới thiệu </b>
+          <p><a href="#">Về chúng tôi</a></p>
+          <p><a href="#">Hợp tác với chúng tôi</a></p>
+          <p><a href="#">Cơ hội nghề nghiệp</a></p>
+          <p><a href="#">Quy chế sàn giao dịch</a></p>
+          <p><a href="#">Các khuyến mãi đã bán</a></p>
+          <p><a href="#">Blog News</a></p>
+        </div>
+        <div>
+          <b>Chính sách công ty</b>
+          <p><a href="#">Hình thức đặt hàng</a></p>
+          <p><a href="#">Hình thức thanh toán</a></p>
+          <p><a href="#">Top10shophoa.com</a></p>
+          <p><a href="#">Phương thức vận chuyển</a></p>
+          <p><a href="#">Chính sách đổi trả hàng</a></p>
+          <p><a href="#">Hướng dẫn sử dụng</a></p>
+        </div>
+
+        <div class="item-b">
+          <b>Hotline liên hệ</b>
+
+          <div class="last-d">
+            <div><img src="../anh/DienThoai_last.png" alt="" /></div>
+            <div>
+              <b>092.3355.800</b>
+              <p>(Tất cả các ngày trong tuần)</p>
+            </div>
+          </div>
+          <br />
+          <b>Kết nối với chúng tôi</b>
+          <div><img src="../anh/last_KetNoi.png" alt="" /></div>
+          <br />
+          <b>Chứng nhận</b>
+
+          <div><img src="../anh/ChungNhan_Last.png" alt="" /></div>
+        </div>
+        <div class="item-c">
+          <b>Hệ thống hoa Xuân Thành</b>
+          <p>
+            <b>Hoa tươi Xuân Thành</b>
+            <span style="line-height: 25px;"
+              >là cửa hàng hoa chuyên cung cấp dịch vụ hoa tươi và điện hoa
+              online trên toàn quốc. Cửa hàng được thành lập tháng 10 năm 2015
+              và hoạt động cung cấp hoa gần 6 năm liên tiếp. Cửa hàng cung cấp
+              các dịch vụ khác nhau đáp ứng nhu cầu, mong muốn khác nhau của
+              người tiêu dùng. Về dịch vụ cung cấp sản phẩm hoa như hoa khai
+              trương, hoa sinh nhật, hoa tình yêu, hoa tang lễ… Ngoài ra, cửa
+              hàng còn cung cấp sản phẩm bánh sinh nhật, giỏ trái cây…</span
+            ></p>
+            <span></span>
+          </p>
+        </div>
+
+        <div class="item-a"><b>Chấp nhận thanh toán:</b>
+        <div style="margin-top: 20px;"><img style="width: 430px;" src="../anh/ChapNhanThanhToan.png" alt=""></div></div>
+      </div>
+      <div style="background-color: white;height: 50px;"></div>
+      <div class="last1">© Hoa Xuân Thành</div>
+    </div>
+
+    </div>
+  </body>
+</html>

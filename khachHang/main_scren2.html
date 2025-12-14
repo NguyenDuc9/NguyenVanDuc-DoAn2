@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/screen1.css" />
+    <link rel="stylesheet" href="../CSS/screen2.css" />
+    <link rel="stylesheet" href="main_screen.js" />
+    <style></style>
+  </head>
+
+  <body>
+    <div>
+      <div style="background-color: white">
+        <div class="head1">
+          <div style="width: 50%" class="a">
+            <a href="main_screen1.html"
+              >Tiệm hoa Nguyễn Đức - Uy tín - Chuyên nghiệp - Phục vụ 24/7</a
+            >
+          </div>
+          <div style="width: 10%"></div>
+          <div style="width: 30%" class="head1 hide-on-mobile">
+            <div>
+              <div class="menu-login">
+                <div class="menu-button">Tài khoản</div>
+                <ul class="dropdown">
+                  <li><a href="Login.html">Đăng nhập</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>Sản phẩm</div>
+            <div>Hệ thống cửa hàng</div>
+          </div>
+        </div>
+        <div class="head2" style="background-color: white">
+          <div style="width: 350px; text-align: center; color: orange">
+            <h2>Shop Hoa Nguyễn Đức</h2>
+          </div>
+          <div class="search-box" style="margin-top: 15px; position: relative">
+            <div>
+              <input
+                type="text"
+                id="search"
+                placeholder="Tìm kiếm sản phẩm..."
+              />
+            </div>
+          </div>
+
+          <div style="width: 20px"></div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Gọi Điện</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+          <div class="DienThoai">
+            <div><img src="../anh/dienthoai.png" alt="" /></div>
+            <div>
+              <p>Liên hệ zalo</p>
+              <p style="margin-top: -7px">092.3355.800</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="search-results"
+        style="
+          margin-left: 510px;
+          margin-top: -20px;
+          position: absolute;
+
+          width: 400px;
+
+          background: white;
+          z-index: 9999;
+          /* border: 1px solid #ccc; */
+        "
+      ></div>
+
+      <div class="head1 hide-on-mobile" style="height: 50px; line-height: 50px">
+        <div style="margin-left: 12%; width: 27.5%">
+          <div class="menu-container">
+            <!-- <i class="fas fa-bars"></i> -->
+            <div class="menu-title">
+              <p style="margin-top: -10px">&#9776; Danh mục sản phẩm</p>
+            </div>
+          </div>
+
+          <!-- Sidebar menu -->
+          <div class="sidebar">
+            <div class="menu-item">
+              Khuyến mãi gốc <span class="hot">HOT</span>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa Tươi ▸</span>
+              <div class="submenu">
+                <div>Hoa cẩm chướng</div>
+                <div>Hoa cẩm tú cầu</div>
+                <div>Hoa cát tường</div>
+                <div>Hoa đồng tiền</div>
+                <div>Hoa hồng</div>
+                <div>Hoa Hướng dương</div>
+                <div>Hoa lan</div>
+                <div>Hoa ly</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Kiểu dáng ▸</span>
+              <div class="submenu">
+                <div>Giỏ hoa</div>
+                <div>Bình hoa</div>
+                <div>Bó hoa</div>
+                <div>Hoa hộp gỗ</div>
+                <div>Kệ hoa khai</div>
+                <div>Lãng hoa</div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <span>Hoa sinh nhật ▸</span>
+              <div class="submenu">
+                <div>Tặng sinh nhật bạnbạn</div>
+                <div>Hoa tặng vợ</div>
+                <div>Hoa tặng xếp</div>
+                <div>Hoa tặng đồng nghiệp</div>
+                <div>Tặng người yêu</div>
+              </div>
+            </div>
+
+            <div class="menu-item">Hoa Chia Buồn</div>
+            <div class="menu-item">Hoa cảm ơn</div>
+            <div class="menu-item">Hoa khai trương</div>
+            <div class="menu-item">Hoa ngày nhà giáo</div>
+            <div class="menu-item">Hoa ngày phụ nữ</div>
+            <div class="menu-item">Hoa tình yêu</div>
+          </div>
+        </div>
+        <div style="width: 30%; gap: 15px; line-height: 50px; display: flex">
+          <div>Trang chủ</div>
+          <div>Sản phẩm</div>
+          <div>Giới thiệu</div>
+          <div>Tin tức</div>
+          <div>Liên hệ</div>
+        </div>
+        <div style="width: 25%">
+          <a href="shopping_cart.html"> Giỏ hàng 🛒</a>
+        </div>
+      </div>
+
+      <div class="head3">
+        <div class="item1">
+          <img id="slider-image" src="../anh/anh2.png" alt="anh trinh chieu" />
+          <div class="controls">
+            <div>
+              <button class="nav prev hide-on-mobile" onclick="prevImage()">
+                &#9665;
+              </button>
+              <button class="nav next hide-on-mobile" onclick="nextImage()">
+                &#9655;
+              </button>
+            </div>
+          </div>
+
+          <script>
+            const images = [
+              "../anh/anh2.png",
+              "../anh/list_hoa1.png",
+              "../anh/list_hoa2.png",
+            ];
+            let index = 0;
+
+            function updateImage() {
+              document.getElementById("slider-image").src = images[index];
+            }
+
+            function nextImage() {
+              index = (index + 1) % images.length;
+              updateImage();
+            }
+
+            function prevImage() {
+              index = (index - 1 + images.length) % images.length;
+              updateImage();
+            }
+            // Tự động chuyển ảnh mỗi 3 giây (3000ms)
+            setInterval(nextImage, 3000);
+          </script>
+        </div>
+
+        <div class="hide-on-mobile"><img src="../anh/anh2.png" alt="" /></div>
+        <div class="hide-on-mobile"><img src="../anh/anh2.png" alt="" /></div>
+        <div class="item2 hide-on-mobile">
+          <img src="../anh/anh1.png" alt="" />
+        </div>
+      </div>
+      <div style="background-color: white">
+        <br />
+        <div><h3>DANH SÁCH HOA</h3></div>
+
+        <div id="product-list" class="container"></div>
+
+        <script>
+          const products = [
+            {
+              id: 1,
+              name: "Hoa hồng đỏ",
+              price: 120000,
+              image: "../anh/HoaQC.png",
+            },
+            {
+              id: 2,
+              name: "Hoa hướng dương",
+              price: 95000,
+              image: "../anh/HoaQC1.png",
+            },
+            {
+              id: 3,
+              name: "Hoa tulip",
+              price: 150000,
+              image: "../anh/HoaQC2.png",
+            },
+            {
+              id: 4,
+              name: "Hoa ly trắng",
+              price: 180000,
+              image: "../anh/HoaQC3.png",
+            },
+            {
+              id: 5,
+              name: "Hoa lan hồ điệp",
+              price: 250000,
+              image: "../anh/HoaQC4.png",
+            },
+            {
+              id: 6,
+              name: "Hoa cẩm chướng",
+              price: 90000,
+              image: "../anh/HoaQC5.png",
+            },
+            {
+              id: 7,
+              name: "Hoa baby",
+              price: 80000,
+              image: "../anh/HoaQC6.png",
+            },
+            {
+              id: 8,
+              name: "Hoa đồng tiền",
+              price: 70000,
+              image: "../anh/HoaQC7.png",
+            },
+            {
+              id: 9,
+              name: "Hoa sen",
+              price: 160000,
+              image: "../anh/HoaQC8.png",
+            },
+          ];
+
+          // Lưu vào localStorage để trang chi tiết có thể dùng lại
+          localStorage.setItem("products", JSON.stringify(products));
+          const searchInput = document.getElementById("search");
+          const searchResults = document.getElementById("search-results");
+
+          // Lắng nghe khi gõ chữ
+          searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+
+            // Nếu input rỗng, xóa kết quả
+            if (!query) {
+              searchResults.innerHTML = "";
+              return;
+            }
+
+            // Lọc sản phẩm có tên chứa chữ vừa gõ
+            const filtered = products.filter((p) =>
+              p.name.toLowerCase().includes(query)
+            );
+
+            // Hiển thị kết quả với ảnh + tên + giá
+            searchResults.innerHTML = filtered
+              .map(
+                (p) => `
+    <div class="result-item" style="display:flex; align-items:center; padding:5px; cursor:pointer; border-bottom:1px solid #eee;">
+      <img src="${p.image}" alt="${
+                  p.name
+                }" style="width:50px; height:50px; object-fit:cover; margin-right:10px;">
+      <div>
+        <p style="margin:0; font-weight:bold;">${p.name}</p>
+        <p style="margin:0; color:red;">${p.price.toLocaleString()} VND</p>
+      </div>
+    </div>
+  `
+              )
+              .join("");
+
+            // Thêm sự kiện click vào từng kết quả
+            document.querySelectorAll(".result-item").forEach((el, index) => {
+              el.addEventListener("click", () => {
+                window.location.href = `Product_1.html?id=${filtered[index].id}`;
+              });
+            });
+          });
+
+          const listDiv = document.getElementById("product-list");
+          listDiv.innerHTML = products
+            .map(
+              (p) => `
+    
+    
+          <div class="product">
+            <div class="left">
+              <a href="Product_1.html?id=${
+                p.id
+              }"><img class="flower-img-small" src="${p.image}" alt="" /></a>
+            </div>
+            <div class="right" style="color: rgb(241, 155, 93)">
+              <div style="margin-top: 15%">
+                <p style="color: rgb(241, 155, 93)">${p.name}</p>
+                <h4 style="color: red">${p.price.toLocaleString()} </h4>
+              </div>
+            </div>
+          </div>
+          
+      
+    `
+            )
+            .join("");
+        </script>
+        <tbody></tbody>
+        <script src="themsp.js"></script>
+        <script src="../acmin/main1.js"></script>
+
+        <br />
+      </div>
+      <div class="head2">
+        <div style="width: 20%">
+          <div class="b">Chọn loại hoa</div>
+          <div style="height: 10px"></div>
+          <div class="flower" class="b">
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+          </div>
+          <div style="height: 12px"></div>
+          <div class="b">Kiểu dáng</div>
+          <div style="height: 10px"></div>
+          <div class="flower">
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+            <div>
+              <img src="../anh/LogoHoa.png" alt="" />
+              <p>Cẩm chướng</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="hide-on-mobile">
+            <div
+              style="
+                width: 80%;
+                margin-left: 20%;
+                height: 30px;
+                background-color: white;
+                display: flex;
+                gap: 20px;
+              "
+            >
+              <div style="width: 12%"></div>
+              <div>Hoa sinh nhật</div>
+              <div>Hoa khai trương</div>
+              <div>Hoa tình yêu</div>
+              <div>Hoa cảm ơn</div>
+              <div>Hoa cưới</div>
+            </div>
+          </div>
+          <br />
+          <div class="product" style="margin-left: 15px">
+            <div>
+              <div class="grid1">
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+              </div>
+              <img
+                src="../anh/a1.png"
+                alt=""
+                style="width: 395px; margin-top: 15px"
+              />
+            </div>
+
+            <div>
+              <div class="grid1">
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+                <div>
+                  <img src="../anh/HoaQC.png" alt="" />
+                  <p>XT LHD 345</p>
+                  <p>Liên hệ</p>
+                </div>
+              </div>
+              <img
+                src="../anh/a1.png"
+                alt=""
+                style="width: 395px; margin-top: 15px"
+              />
+            </div>
+          </div>
+          <!-- <div class="product">
+            <div><img src="../anh/a1.png" alt="" /></div>
+            
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div class="grid2">
+      <div style="margin-left: 10px">
+        <img src="../anh/HoaQC.png" alt="" />
+        <p>XT LHD 345</p>
+        <p>Liên hệ</p>
+      </div>
+      <div>
+        <img src="../anh/HoaQC.png" alt="" />
+        <p>XT LHD 345</p>
+        <p>Liên hệ</p>
+      </div>
+      <div>
+        <img src="../anh/HoaQC.png" alt="" />
+        <p>XT LHD 345</p>
+        <p>Liên hệ</p>
+      </div>
+      <div>
+        <img src="../anh/HoaQC.png" alt="" />
+        <p>XT LHD 345</p>
+        <p>Liên hệ</p>
+      </div>
+      <div>
+        <img src="../anh/HoaQC.png" alt="" />
+        <p>XT LHD 345</p>
+        <p>Liên hệ</p>
+      </div>
+    </div>
+    <div style="width: 100%; background-color: white">
+      <h3>Tin tức - Bài viết</h3>
+      <button
+        style="
+          background-color: chocolate;
+          border: chocolate;
+          color: white;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 5px;
+          margin-left: 46%;
+          width: 100px;
+        "
+      >
+        Xem thêm
+      </button>
+      <br />
+      <div class="flex3">
+        <div class="grid3">
+          <div><img src="../anh/o1.png" alt="" /></div>
+          <div>
+            <h4>Giao hàng cực nhanh</h4>
+            <p>Miễn phí với đơn hàng trị giá trên 800.000đ</p>
+          </div>
+        </div>
+        <div class="grid3">
+          <div><img src="../anh/02.png" alt="" /></div>
+          <div>
+            <h4>Mua hàng siêu tiết kiệm</h4>
+            <p>Rẻ hơn từ 10% – 30% so với giá thị trường</p>
+          </div>
+        </div>
+        <div class="grid3">
+          <div><img src="../anh/o3.png" alt="" /></div>
+          <div>
+            <h4>Sản phẩm chính hãng 100%</h4>
+            <p>Sản phẩm được nhập khẩu chính hãng</p>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+
+    <div class="c">
+      <img src="../anh/late1.png" alt="" />
+      <img src="../anh/late2.png" alt="" />
+      <img src="../anh/late3.png" alt="" />
+    </div>
+    <div style="background-color: white; height: 50px"></div>
+    <div class="hide-on-mobile" style="background-color: white">
+      <div class="last">
+        <div>
+          <b>Giới thiệu </b>
+          <p><a href="#">Về chúng tôi</a></p>
+          <p><a href="#">Hợp tác với chúng tôi</a></p>
+          <p><a href="#">Cơ hội nghề nghiệp</a></p>
+          <p><a href="#">Quy chế sàn giao dịch</a></p>
+          <p><a href="#">Các khuyến mãi đã bán</a></p>
+          <p><a href="#">Blog News</a></p>
+        </div>
+        <div>
+          <b>Chính sách công ty</b>
+          <p><a href="#">Hình thức đặt hàng</a></p>
+          <p><a href="#">Hình thức thanh toán</a></p>
+          <p><a href="#">Top10shophoa.com</a></p>
+          <p><a href="#">Phương thức vận chuyển</a></p>
+          <p><a href="#">Chính sách đổi trả hàng</a></p>
+          <p><a href="#">Hướng dẫn sử dụng</a></p>
+        </div>
+
+        <div class="item-b">
+          <b>Hotline liên hệ</b>
+
+          <div class="last-d">
+            <div><img src="../anh/DienThoai_last.png" alt="" /></div>
+            <div>
+              <b>092.3355.800</b>
+              <p>(Tất cả các ngày trong tuần)</p>
+            </div>
+          </div>
+          <br />
+          <b>Kết nối với chúng tôi</b>
+          <div><img src="../anh/last_KetNoi.png" alt="" /></div>
+          <br />
+          <b>Chứng nhận</b>
+
+          <div><img src="../anh/ChungNhan_Last.png" alt="" /></div>
+        </div>
+        <div class="item-c">
+          <b>Hệ thống hoa Xuân Thành</b>
+          <p>
+            <b>Hoa tươi Xuân Thành</b>
+
+            <span style="line-height: 25px"
+              >là cửa hàng hoa chuyên cung cấp dịch vụ hoa tươi và điện hoa
+              online trên toàn quốc. Cửa hàng được thành lập tháng 10 năm 2015
+              và hoạt động cung cấp hoa gần 6 năm liên tiếp. Cửa hàng cung cấp
+              các dịch vụ khác nhau đáp ứng nhu cầu, mong muốn khác nhau của
+              người tiêu dùng. Về dịch vụ cung cấp sản phẩm hoa như hoa khai
+              trương, hoa sinh nhật, hoa tình yêu, hoa tang lễ… Ngoài ra, cửa
+              hàng còn cung cấp sản phẩm bánh sinh nhật, giỏ trái cây…</span
+            >
+          </p>
+        </div>
+
+        <div class="item-a">
+          <b>Chấp nhận thanh toán:</b>
+          <div style="margin-top: 20px">
+            <img
+              style="width: 430px"
+              src="../anh/ChapNhanThanhToan.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div style="background-color: white; height: 50px"></div>
+      <div class="diachi">
+        <h1>Địa chỉ của hàng</h1>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.256167755257!2d106.05742777502896!3d20.942225380685557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a30555555555%3A0x39a8acd006ab8e69!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBTxrAgUGjhuqFtIEvhu7kgVGh14bqtdCBIxrBuZyBZw6puLCBDxqEgc-G7nyAy!5e0!3m2!1svi!2s!4v1765616776081!5m2!1svi!2s"
+          width="1000px"
+          height="300px"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <div class="last1">© Hoa Xuân Thành</div>
+    </div>
+    <div class="hidden-on-desktop">
+      <p
+        style="
+          height: 50px;
+          color: aliceblue;
+          background-color: green;
+          text-align: center;
+          line-height: 50px;
+          font-size: 25px;
+        "
+      >
+        Gọi ngay: 0123456789
+      </p>
+    </div>
+    <!-- ICON CHAT -->
+    <!-- ICON CHAT -->
+    <div
+      id="chatIcon"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #4caf50;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 99999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      "
+    >
+      <!-- ICON ROBOT -->
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 2v2" />
+        <rect x="3" y="6" width="18" height="14" rx="2" />
+        <path d="M8 10h.01M16 10h.01" />
+        <path d="M7 16a5 5 0 0 0 10 0" />
+      </svg>
+    </div>
+
+    <!-- POPUP CHAT -->
+    <div
+      id="chat-popup"
+      style="
+        position: fixed;
+        bottom: 100px;
+        right: 25px;
+        width: 420px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        padding: 0;
+        display: none;
+        z-index: 99999;
+      "
+    >
+      <div
+        class="chatbox"
+        style="
+          background: white;
+          width: 100%;
+          border-radius: 12px;
+          padding: 16px;
+          font-family: Arial, sans-serif;
+        "
+      >
+        <h2 style="margin-top: 0">
+          Chatbox tư vấn hoa 🌸
+          <span id="closeChat" style="float: right; cursor: pointer">✖</span>
+        </h2>
+
+        <div
+          id="messages"
+          style="
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: #f7f7f7;
+            margin-bottom: 10px;
+          "
+        ></div>
+
+        <form
+          id="flowerForm"
+          style="display: flex; flex-direction: column; gap: 8px"
+        >
+          <label
+            >Tuổi:
+            <input
+              id="age"
+              type="number"
+              value="25"
+              min="1"
+              max="120"
+              style="padding: 6px; border-radius: 6px; border: 1px solid #ccc"
+            />
+          </label>
+
+          <label
+            >Sự kiện:
+            <select
+              id="eventType"
+              style="padding: 6px; border-radius: 6px; border: 1px solid #ccc"
+            >
+              <option>Sinh nhật</option>
+              <option>Kỷ niệm</option>
+              <option>Chúc mừng</option>
+              <option>Xin lỗi</option>
+              <option>Lãng mạn</option>
+              <option>Tặng thầy cô</option>
+              <option>Khác</option>
+            </select>
+          </label>
+
+          <label
+            >Màu:
+            <select
+              id="color"
+              style="padding: 6px; border-radius: 6px; border: 1px solid #ccc"
+            >
+              <option>Hồng</option>
+              <option>Đỏ</option>
+              <option>Trắng</option>
+              <option>Pastel</option>
+              <option>Rực rỡ</option>
+            </select>
+          </label>
+
+          <label
+            >Phong cách:
+            <select
+              id="style"
+              style="padding: 6px; border-radius: 6px; border: 1px solid #ccc"
+            >
+              <option>Hiện đại</option>
+              <option>Cổ điển</option>
+              <option>Tối giản</option>
+            </select>
+          </label>
+
+          <label
+            >Ngân sách:
+            <select
+              id="budget"
+              style="padding: 6px; border-radius: 6px; border: 1px solid #ccc"
+            >
+              <option>Thấp</option>
+              <option>Trung bình</option>
+              <option>Cao</option>
+            </select>
+          </label>
+
+          <button
+            type="submit"
+            style="
+              background: #4caf50;
+              color: white;
+              padding: 8px;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+            "
+          >
+            Tư vấn
+          </button>
+
+          <button
+            type="button"
+            id="resetBtn"
+            style="
+              background: #999;
+              color: white;
+              padding: 8px;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+            "
+          >
+            Làm lại
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const chatIcon = document.getElementById("chatIcon");
+      const chatPopup = document.getElementById("chat-popup");
+      const closeChat = document.getElementById("closeChat");
+
+      chatIcon.onclick = () => {
+        chatPopup.style.display = "block";
+      };
+
+      closeChat.onclick = () => {
+        chatPopup.style.display = "none";
+      };
+
+      // ================= Chat logic =======================
+      const messagesDiv = document.getElementById("messages");
+      const form = document.getElementById("flowerForm");
+      const resetBtn = document.getElementById("resetBtn");
+
+      function addMessage(text, from = "bot") {
+        const div = document.createElement("div");
+        div.textContent = text;
+
+        div.style.margin = "8px 0";
+        div.style.padding = "8px 12px";
+        div.style.borderRadius = "12px";
+        div.style.maxWidth = "80%";
+        div.style.background = from === "bot" ? "#e3f2fd" : "#4caf50";
+        div.style.color = from === "bot" ? "#333" : "white";
+        div.style.alignSelf = from === "bot" ? "flex-start" : "flex-end";
+        div.style.display = "inline-block";
+
+        messagesDiv.appendChild(div);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function generateSuggestion(age, eventType, prefs) {
+        // --- Phân loại tuổi ---
+        const ageGroup =
+          age < 18
+            ? "teen"
+            : age <= 30
+            ? "young"
+            : age <= 50
+            ? "adult"
+            : "senior";
+
+        // --- Gợi ý hoa theo sự kiện ---
+        const eventGuide = {
+          "Sinh nhật": {
+            flowers: ["Hoa hồng pastel", "Baby", "Tulip", "Hướng dương"],
+            tone: "vui tươi, rực rỡ",
+            card: "Chúc bạn thêm tuổi mới tràn đầy niềm vui và hạnh phúc!",
+          },
+          "Kỷ niệm": {
+            flowers: ["Hoa hồng đỏ", "Mẫu đơn", "Lan hồ điệp"],
+            tone: "lãng mạn, trang trọng",
+            card: "Cảm ơn vì đã luôn đồng hành. Chúc chúng ta còn nhiều kỷ niệm đẹp nữa!",
+          },
+          "Chúc mừng": {
+            flowers: ["Hướng dương", "Cẩm chướng", "Lily", "Lan"],
+            tone: "tự tin, mạnh mẽ",
+            card: "Chúc mừng bạn đạt được thành công xứng đáng!",
+          },
+          "Xin lỗi": {
+            flowers: ["Hồng kem", "Tulip trắng", "Lily trắng"],
+            tone: "nhẹ nhàng, chân thành",
+            card: "Mình thật sự xin lỗi. Mong được tha thứ.",
+          },
+          "Lãng mạn": {
+            flowers: ["Hồng đỏ", "Hồng Ecuador", "Tulip đỏ"],
+            tone: "nồng nàn, sâu sắc",
+            card: "Gửi tới người đặc biệt nhất trong trái tim mình.",
+          },
+          "Tặng thầy cô": {
+            flowers: ["Lan hồ điệp", "Hướng dương", "Cẩm chướng"],
+            tone: "tôn trọng, biết ơn",
+            card: "Chúc thầy/cô luôn mạnh khỏe và tràn đầy nhiệt huyết.",
+          },
+          Khác: {
+            flowers: ["Hoa hồng", "Baby", "Lily"],
+            tone: "nhã nhặn",
+            card: "Chúc bạn một ngày thật tuyệt vời!",
+          },
+        };
+
+        const event = eventGuide[eventType];
+
+        // --- Gợi ý theo tuổi ---
+        const ageTips = {
+          teen: "Tuổi teen phù hợp với các bó hoa dễ thương, màu pastel, kiểu dáng nhỏ gọn.",
+          young:
+            "Người trẻ ưa phong cách hiện đại, phá cách – phối nhiều màu hoặc hoa độc đáo.",
+          adult:
+            "Người trưởng thành thường thích sự tinh tế, sang trọng – lan, lily, mẫu đơn.",
+          senior:
+            "Người lớn tuổi hợp hoa trang nhã, nhẹ nhàng như lan trắng, cẩm chướng.",
+        };
+
+        // --- Gợi ý theo phong cách ---
+        const styleNote = {
+          "Hiện đại": "Bố cục tự do, phối màu trendy, giấy gói Hàn Quốc.",
+          "Cổ điển": "Thiết kế tròn, cân đối, tông trầm – ruy băng bản lớn.",
+          "Tối giản": "Bó gọn, ít chi tiết, giấy kraft hoặc giấy trắng tinh.",
+        };
+
+        // --- Gợi ý theo ngân sách ---
+        const budgetNote = {
+          Thấp: "Gợi ý: bó mini 200k – 350k.",
+          "Trung bình": "Gợi ý: bó size M đẹp chỉ 400k – 650k.",
+          Cao: "Gợi ý: bó cao cấp từ 800k – 1.5 triệu, rất sang trọng.",
+        };
+
+        // --- Màu sắc ưu tiên ---
+        const colorTone = `Màu chủ đạo khách thích: **${prefs.color}** – sẽ phối theo tone phù hợp.`;
+
+        // --- Tổng hợp gợi ý ---
+        const summary = `🌸 **Gợi ý bó hoa cho ${eventType.toLowerCase()}**:
+• Các loại phù hợp: **${event.flowers.join(", ")}**
+• Phong cách: **${event.tone}**
+• Màu sắc: ưu tiên tone **${prefs.color}**
+• Thiết kế: ${styleNote[prefs.style]}`;
+
+        // --- Chi tiết nâng cao ---
+        const details = `💡 **Phân tích theo tuổi:** ${ageTips[ageGroup]}
+
+💰 **Ngân sách:** ${budgetNote[prefs.budget]}
+
+💌 **Gợi ý thiệp nên ghi:**  
+"${event.card}"
+
+🌼 **Gợi ý mẫu thực tế phù hợp nhất:**
+- Một bó ${event.flowers[0]} phối với Baby trắng tạo cảm giác tinh tế.
+- Thêm chút lá bạc để tăng điểm sang trọng.
+- Gói theo phong cách ${prefs.style.toLowerCase()} giúp tôn hoa mà không bị rối.
+
+👉 Nếu muốn ấn tượng hơn, bạn có thể thêm:
+- Thiệp mini +20k
+- Hộp quà cao cấp +50k
+- Kèm chocolate nếu là tặng người yêu.`;
+
+        return { summary, details };
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const age = +document.getElementById("age").value;
+        const eventType = document.getElementById("eventType").value;
+        const prefs = {
+          color: document.getElementById("color").value,
+          style: document.getElementById("style").value,
+          budget: document.getElementById("budget").value,
+        };
+
+        addMessage(`Tôi chọn: ${eventType}, màu ${prefs.color}`, "user");
+
+        const result = generateSuggestion(age, eventType, prefs);
+
+        setTimeout(() => {
+          addMessage(result.summary, "bot");
+          addMessage(result.details, "bot");
+        }, 300);
+      });
+
+      resetBtn.onclick = () => {
+        messagesDiv.innerHTML = "";
+        addMessage("Bạn cần tư vấn hoa gì? 🌸");
+      };
+
+      // Tin nhắn mở đầu
+      addMessage("Chào bạn! Mình có thể hỗ trợ tư vấn hoa. 🌸");
+      chatIcon.onclick = () => {
+        chatPopup.style.display =
+          chatPopup.style.display === "block" ? "none" : "block";
+      };
+    </script>
+
+    <script src="gt.js"></script>
+    <div
+      style="
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #4caf50;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 99999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      "
+    >
+      <!-- ICON MESSAGE -->
+      <a href="http://localhost:3000/user.html"
+        ><div>
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            />
+          </svg></div
+      ></a>
+    </div>
+  </body>
+  <a href="http://localhost:3000/admin.html">chátttttt</a>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh mục hoa - Shop Hoa Nguyễn Đức</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: #f9f9f9;
+      }
+      /* Sidebar */
+      .sidebar {
+        width: 230px;
+        background-color: #ff6600;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+      }
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .nav-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .nav-item:hover,
+      .active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      /* Content */
+      .content {
+        flex: 1;
+        padding: 30px;
+      }
+      h1 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+      .form-section {
+        margin-bottom: 20px;
+      }
+      input,
+      textarea {
+        padding: 8px;
+        margin: 4px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+      }
+      textarea {
+        resize: none;
+        height: 60px;
+      }
+      button {
+        padding: 8px 14px;
+        margin-top: 8px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn-add {
+        background: #28a745;
+        color: white;
+      }
+      .btn-edit {
+        background: #007bff;
+        color: white;
+      }
+      .btn-delete {
+        background: #dc3545;
+        color: white;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #ff6600;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa<br />Nguyễn Đức</h2>
+
+      <div class="nav-item" onclick="navigate('mainPage.html')">
+        🏠 Trang chủ
+      </div>
+      <div class="nav-item active" onclick="navigate('danhmuc.html')">
+        🌼 Danh mục hoa
+      </div>
+      <div class="nav-item" onclick="navigate('hoa.html')">🌷 Hoa</div>
+      <div class="nav-item" onclick="navigate('khuyenmai.html')">
+        🎁 Khuyến mãi
+      </div>
+      <div class="nav-item" onclick="navigate('daban.html')">
+        💐 Sản phẩm đã bán
+      </div>
+      <div class="nav-item" onclick="navigate('donhang.html')">
+        🧾 Đơn đặt hàng
+      </div>
+      <div class="nav-item" onclick="navigate('thongTinKHachHang.html')">
+        👤 Khách hàng
+      </div>
+    </div>
+    <script>
+      function navigate(page) {
+        window.location.href = page;
+      }
+    </script>
+
+    <!-- Main content -->
+    <div class="content">
+      <h1>Danh mục hoa</h1>
+
+      <div class="form-section">
+        <input
+          type="text"
+          id="tenDanhMuc"
+          placeholder="Tên danh mục..."
+        /><br />
+        <textarea id="moTa" placeholder="Mô tả danh mục..."></textarea><br />
+        <button class="btn-add" onclick="themDanhMuc()">Thêm danh mục</button>
+      </div>
+
+      <table id="bangDanhMuc">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Mã danh mục</th>
+            <th>Tên danh mục</th>
+            <th>Mô tả</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Lấy danh sách danh mục từ localStorage hoặc tạo mảng rỗng
+      let danhMucList = JSON.parse(localStorage.getItem("danhMucList")) || [];
+
+      // Sinh mã tự động dạng DM001, DM002,...
+      function taoMaDanhMucMoi() {
+        if (danhMucList.length === 0) return "DM001";
+        const maCu = danhMucList[danhMucList.length - 1].ma;
+        const so = parseInt(maCu.slice(2)) + 1;
+        return "DM" + so.toString().padStart(3, "0");
+      }
+
+      function hienThiDanhMuc() {
+        const tbody = document.querySelector("#bangDanhMuc tbody");
+        tbody.innerHTML = "";
+        danhMucList.forEach((dm, index) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${dm.ma}</td>
+          <td>${dm.ten}</td>
+          <td>${dm.moTa}</td>
+          <td>
+            <button class="btn-edit" onclick="suaDanhMuc(${index})">Sửa</button>
+            <button class="btn-delete" onclick="xoaDanhMuc(${index})">Xóa</button>
+          </td>
+        `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function themDanhMuc() {
+        const ten = document.getElementById("tenDanhMuc").value.trim();
+        const moTa = document.getElementById("moTa").value.trim();
+
+        if (ten === "") return alert("Vui lòng nhập tên danh mục!");
+        const maMoi = taoMaDanhMucMoi();
+
+        danhMucList.push({ ma: maMoi, ten, moTa });
+        localStorage.setItem("danhMucList", JSON.stringify(danhMucList));
+        document.getElementById("tenDanhMuc").value = "";
+        document.getElementById("moTa").value = "";
+        hienThiDanhMuc();
+      }
+
+      function suaDanhMuc(index) {
+        const dm = danhMucList[index];
+        const tenMoi = prompt("Nhập tên danh mục mới:", dm.ten);
+        const moTaMoi = prompt("Nhập mô tả mới:", dm.moTa);
+
+        if (tenMoi && tenMoi.trim() !== "") dm.ten = tenMoi.trim();
+        if (moTaMoi && moTaMoi.trim() !== "") dm.moTa = moTaMoi.trim();
+
+        localStorage.setItem("danhMucList", JSON.stringify(danhMucList));
+        hienThiDanhMuc();
+      }
+
+      function xoaDanhMuc(index) {
+        if (confirm("Bạn có chắc muốn xóa danh mục này?")) {
+          danhMucList.splice(index, 1);
+          localStorage.setItem("danhMucList", JSON.stringify(danhMucList));
+          hienThiDanhMuc();
+        }
+      }
+
+      hienThiDanhMuc();
+    </script>
+  </body>
+</html>

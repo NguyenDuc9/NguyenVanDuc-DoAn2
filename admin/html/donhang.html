@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý khách hàng - Shop Hoa Nguyễn Đức</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: #f8f9fa;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 230px;
+        background: #ff6600;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+      }
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .nav-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .nav-item:hover,
+      .nav-item.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Content */
+      .content {
+        flex: 1;
+        padding: 30px;
+        background: #fff;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+
+      #searchBox {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      th {
+        background: #ff6600;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>🌸 Shop Hoa<br />Nguyễn Đức</h2>
+
+      <div class="nav-item" onclick="navigate('mainPage.html')">
+        🏠 Trang chủ
+      </div>
+      <div class="nav-item" onclick="navigate('danhmuc.html')">
+        🌼 Danh mục hoa
+      </div>
+      <div class="nav-item" onclick="navigate('hoa.html')">🌷 Hoa</div>
+      <div class="nav-item" onclick="navigate('khuyenmai.html')">
+        🎁 Khuyến mãi
+      </div>
+      <div class="nav-item" onclick="navigate('daban.html')">
+        💐 Sản phẩm đã bán
+      </div>
+      <div class="nav-item active" onclick="navigate('donhang.html')">
+        🧾 Đơn đặt hàng
+      </div>
+      <div class="nav-item" onclick="navigate('thongTinKHachHang.html')">
+        👤 Khách hàng
+      </div>
+    </div>
+    <script>
+      function navigate(page) {
+        window.location.href = page;
+      }
+    </script>
+
+    <!-- Content -->
+    <div class="content">
+      <div
+        style="
+          font-family: Arial, sans-serif;
+          background-color: #fff8f0;
+          padding: 30px;
+          color: #333;
+        "
+      >
+        <h2 style="text-align: center; color: #ff6600">ĐƠN HÀNG ĐÃ ĐẶT</h2>
+
+        <div id="order-detail" style="margin-top: 20px"></div>
+      </div>
+
+      <div id="order-list"></div>
+
+      <script>
+        function loadOrders() {
+          const orders = JSON.parse(localStorage.getItem("orders")) || [];
+          const listDiv = document.getElementById("order-list");
+
+          if (orders.length === 0) {
+            listDiv.innerHTML = `<p style="text-align:center; color:red;">❌ Chưa có đơn hàng nào.</p>`;
+            return;
+          }
+
+          let html = "";
+
+          orders.forEach((order, index) => {
+            const firstImg =
+              order.gioHang[0]?.image || "https://via.placeholder.com/80";
+
+            html += `
+      <div 
+        style="
+          background:#fff;
+          padding:15px;
+          border-radius:10px;
+          box-shadow:0 2px 8px rgba(0,0,0,0.08);
+          margin-bottom:18px;
+        "
+      >
+
+        <!-- Header -->
+        <div style="display:flex; align-items:center; gap:12px;">
+          
+          <img 
+            src="${firstImg}" 
+            style="
+              width:70px;
+              height:70px;
+              border-radius:8px;
+              object-fit:cover;
+              border:1px solid #eee;
+            "
+          >
+
+          <div style="flex:1;">
+            <div><b>Mã đơn:</b> ${order.maDonHang}</div>
+            <div><b>Khách:</b> ${order.khachHang.hoTen}</div>
+            <div style="color:#ff4d00; font-weight:bold; font-size:14px;">
+              ${order.trangThai}
+            </div>
+          </div>
+
+          <div style="color:#e60023; font-weight:bold; font-size:16px;">
+            ${order.tongTien.toLocaleString()} đ
+          </div>
+
+        </div>
+
+        <!-- Button -->
+        <button
+          onclick="toggleDetail(${index})"
+          style="
+            background:#ff6600;
+            color:white;
+            padding:8px 14px;
+            border:none;
+            border-radius:6px;
+            margin-top:10px;
+            cursor:pointer;
+            font-size:14px;
+          "
+        >
+          👁 Xem chi tiết
+        </button>
+        <button
+          onclick="toggleDetail(${index})"
+          style="
+          magin-Left: 400px;
+            background:Green;
+            color:white;
+            padding:8px 14px;
+            border:none;
+            border-radius:6px;
+            margin-top:10px;
+            cursor:pointer;
+            font-size:14px;
+          "
+        >
+          Xác nhận đơn hàng
+        </button>
+        <button
+          onclick="toggleDetail(${index})"
+          style="
+          magin-Left: 400px;
+            background:Red;
+            color:white;
+            padding:8px 14px;
+            border:none;
+            border-radius:6px;
+            margin-top:10px;
+            cursor:pointer;
+            font-size:14px;
+          "
+        >
+          Từ chối đơn hàng
+        </button>
+
+
+        <!-- Detail -->
+        <div 
+          id="detail-${index}"
+          style="
+            margin-top:15px;
+            padding:12px;
+            border-radius:8px;
+            background:#fafafa;
+            border:1px solid #eee;
+            display:none;
+          "
+        >
+
+          <p><b>Địa chỉ:</b> ${order.khachHang.diaChi}</p>
+          <p><b>SĐT:</b> ${order.khachHang.soDienThoai}</p>
+          <p><b>Ghi chú:</b> ${order.khachHang.ghiChu || "Không có"}</p>
+
+          <h4 style="margin-top:15px;">📦 Sản phẩm</h4>
+
+          <table style="width:100%; border-collapse:collapse; margin-top:12px;">
+            <tr>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Ảnh</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Tên SP</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">SL</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Giá</th>
+              <th style="border:1px solid #ddd; padding:8px; background:#fff3e0;">Tổng</th>
+            </tr>
+
+            ${order.gioHang
+              .map(
+                (sp) => `
+              <tr>
+                <td style="border:1px solid #ddd; padding:8px;">
+                  <img 
+                    src="${sp.image}" 
+                    style="width:60px; height:60px; object-fit:cover; border-radius:5px;"
+                  >
+                </td>
+                <td style="border:1px solid #ddd; padding:8px;">${sp.name}</td>
+                <td style="border:1px solid #ddd; padding:8px;">${
+                  sp.quantity
+                }</td>
+                <td style="border:1px solid #ddd; padding:8px;">${sp.price.toLocaleString()} đ</td>
+                <td style="border:1px solid #ddd; padding:8px;">
+                  ${(sp.price * sp.quantity).toLocaleString()} đ
+                </td>
+              </tr>
+            `
+              )
+              .join("")}
+
+          </table>
+        </div>
+
+      </div>
+    `;
+          });
+
+          listDiv.innerHTML = html;
+        }
+
+        function toggleDetail(i) {
+          const box = document.getElementById("detail-" + i);
+          box.style.display = box.style.display === "none" ? "block" : "none";
+        }
+
+        window.addEventListener("DOMContentLoaded", loadOrders);
+      </script>
+    </div>
+  </body>
+</html>
