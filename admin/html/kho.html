@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Kho</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #f4f6f9;
+      }
+      .sidebar {
+        width: 220px;
+        height: 100vh;
+        background: #2c3e50;
+        color: #fff;
+        position: fixed;
+      }
+      .sidebar h2 {
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+        background: #1abc9c;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar ul li {
+        padding: 12px 20px;
+      }
+      .main {
+        margin-left: 220px;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background: #1abc9c;
+        color: #fff;
+      }
+      .section {
+        background: #fff;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>QUẢN LÝ KHO</h2>
+
+      <ul>
+        <li>Dashboard</li>
+        <li><a href="nhacungcap.html">Nhà cung cấp</a></li>
+        <li><a href="nhaphang.html">Nhập hàng</a></li>
+        <li><a href="kho.html">Kho</a></li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="section">
+        <h3>Danh sách tồn kho</h3>
+        <div class="section">
+          <h3>Cập nhật kho</h3>
+          <input placeholder="Mã hoa" />
+          <input placeholder="Số lượng tồn" />
+          <input type="date" />
+          <button>Cập nhật</button>
+        </div>
+        <div class="section">
+          <input
+            id="searchKho"
+            placeholder="Tìm theo mã hoa..."
+            style="width: 300px"
+          />
+        </div>
+
+        <table id="tblKho">
+          <thead>
+            <tr>
+              <th>Mã hoa</th>
+              <th>Số lượng tồn</th>
+              <th>Ngày cập nhật</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const khoData = [
+        { hoa: "H01", ton: 120, ngay: "2025-01-10" },
+        { hoa: "H02", ton: 80, ngay: "2025-01-10" },
+        { hoa: "H03", ton: 95, ngay: "2025-01-10" },
+        { hoa: "H04", ton: 60, ngay: "2025-01-10" },
+        { hoa: "H05", ton: 150, ngay: "2025-01-10" },
+        { hoa: "H06", ton: 70, ngay: "2025-01-10" },
+        { hoa: "H07", ton: 50, ngay: "2025-01-10" },
+        { hoa: "H08", ton: 40, ngay: "2025-01-10" },
+        { hoa: "H09", ton: 30, ngay: "2025-01-10" },
+        { hoa: "H10", ton: 90, ngay: "2025-01-10" },
+      ];
+
+      const tbody = document.querySelector("#tblKho tbody");
+      khoData.forEach((k) => {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `<td>${k.hoa}</td><td>${k.ton}</td><td>${k.ngay}</td>`;
+        tbody.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Quản lý Nhập hàng</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+      }
+      .sidebar {
+        width: 220px;
+        height: 100vh;
+        background: #2c3e50;
+        color: #fff;
+        position: fixed;
+      }
+      .sidebar h2 {
+        text-align: center;
+        padding: 15px;
+        background: #1abc9c;
+        margin: 0;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar ul li {
+        padding: 12px 20px;
+        cursor: pointer;
+      }
+      .sidebar ul li:hover {
+        background: #34495e;
+      }
+
+      .main {
+        margin-left: 220px;
+        padding: 20px;
+      }
+
+      h3 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        margin-bottom: 20px;
+      }
+      table th,
+      table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
+      table th {
+        background: #1abc9c;
+        color: #fff;
+      }
+      tr:hover {
+        background: #f1f1f1;
+        cursor: pointer;
+      }
+
+      .section {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <h2>QUẢN LÝ KHO</h2>
+      <ul>
+        <li>Dashboard</li>
+        <li><a href="nhacungcap.html">Nhà cung cấp</a></li>
+        <li><a href="nhaphang.html">Nhập hàng</a></li>
+        <li><a href="kho.html">Kho</a></li>
+      </ul>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <!-- NHẬP HÀNG -->
+      <div class="section">
+        <h3>Danh sách phiếu nhập</h3>
+        <div class="section">
+          <h3>Phiếu nhập hàng</h3>
+          <input placeholder="Mã nhập" />
+          <input placeholder="Mã NCC" />
+          <input type="date" />
+          <input placeholder="Tổng tiền" />
+          <button>Thêm phiếu</button>
+        </div>
+        <div class="section">
+          <input
+            id="searchNhap"
+            placeholder="Tìm theo mã nhập..."
+            style="width: 300px"
+          />
+          <button>Tìm</button>
+        </div>
+
+        <table id="tblNhapHang">
+          <thead>
+            <tr>
+              <th>Mã nhập</th>
+              <th>Mã NCC</th>
+              <th>Ngày nhập</th>
+              <th>Tổng tiền</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- CHI TIẾT NHẬP -->
+      <div class="section">
+        <h3>Chi tiết nhập hàng (<span id="maNhapChon">---</span>)</h3>
+        <div class="section">
+          <h3>Chi tiết nhập</h3>
+          <input placeholder="Mã nhập" />
+          <input placeholder="Mã hoa" />
+          <input placeholder="Số lượng" />
+          <input placeholder="Giá nhập" />
+          <button>Thêm chi tiết</button>
+        </div>
+
+        <table id="tblChiTiet">
+          <thead>
+            <tr>
+              <th>Mã nhập</th>
+              <th>Mã hoa</th>
+              <th>Số lượng</th>
+              <th>Giá nhập</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // ====== DATA MẪU ======
+      const nhapHangData = [
+        { ma: "NH01", ncc: "NCC01", ngay: "2025-01-01", tong: 1500000 },
+        { ma: "NH02", ncc: "NCC02", ngay: "2025-01-02", tong: 1200000 },
+        { ma: "NH03", ncc: "NCC03", ngay: "2025-01-03", tong: 1800000 },
+        { ma: "NH04", ncc: "NCC04", ngay: "2025-01-04", tong: 1000000 },
+        { ma: "NH05", ncc: "NCC05", ngay: "2025-01-05", tong: 2200000 },
+        { ma: "NH06", ncc: "NCC06", ngay: "2025-01-06", tong: 900000 },
+        { ma: "NH07", ncc: "NCC07", ngay: "2025-01-07", tong: 1700000 },
+        { ma: "NH08", ncc: "NCC08", ngay: "2025-01-08", tong: 1300000 },
+        { ma: "NH09", ncc: "NCC09", ngay: "2025-01-09", tong: 1600000 },
+        { ma: "NH10", ncc: "NCC10", ngay: "2025-01-10", tong: 1400000 },
+      ];
+
+      const chiTietNhapData = [
+        { ma: "NH01", hoa: "H01", sl: 50, gia: 20000 },
+        { ma: "NH01", hoa: "H02", sl: 30, gia: 25000 },
+        { ma: "NH02", hoa: "H03", sl: 40, gia: 30000 },
+        { ma: "NH03", hoa: "H01", sl: 60, gia: 20000 },
+        { ma: "NH03", hoa: "H04", sl: 20, gia: 35000 },
+        { ma: "NH04", hoa: "H02", sl: 25, gia: 25000 },
+        { ma: "NH05", hoa: "H05", sl: 70, gia: 15000 },
+        { ma: "NH06", hoa: "H03", sl: 30, gia: 30000 },
+        { ma: "NH07", hoa: "H06", sl: 45, gia: 28000 },
+        { ma: "NH08", hoa: "H01", sl: 55, gia: 20000 },
+      ];
+
+      // ====== LOAD PHIẾU NHẬP ======
+      const tblNhap = document.querySelector("#tblNhapHang tbody");
+      nhapHangData.forEach((n) => {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>${n.ma}</td>
+        <td>${n.ncc}</td>
+        <td>${n.ngay}</td>
+        <td>${n.tong.toLocaleString()}</td>
+    `;
+        tr.onclick = () => showChiTiet(n.ma);
+        tblNhap.appendChild(tr);
+      });
+
+      // ====== HIỂN THỊ CHI TIẾT ======
+      function showChiTiet(maNhap) {
+        document.getElementById("maNhapChon").innerText = maNhap;
+        const tblCT = document.querySelector("#tblChiTiet tbody");
+        tblCT.innerHTML = "";
+        chiTietNhapData
+          .filter((ct) => ct.ma === maNhap)
+          .forEach((ct) => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${ct.ma}</td>
+                <td>${ct.hoa}</td>
+                <td>${ct.sl}</td>
+                <td>${ct.gia.toLocaleString()}</td>
+            `;
+            tblCT.appendChild(tr);
+          });
+      }
+    </script>
+  </body>
+</html>

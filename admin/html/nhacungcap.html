@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Nhà cung cấp</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #f4f6f9;
+      }
+      .sidebar {
+        width: 220px;
+        height: 100vh;
+        background: #2c3e50;
+        color: #fff;
+        position: fixed;
+      }
+      .sidebar h2 {
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+        background: #1abc9c;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar ul li {
+        padding: 12px 20px;
+      }
+      .main {
+        margin-left: 220px;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background: #1abc9c;
+        color: #fff;
+      }
+      .section {
+        background: #fff;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>QUẢN LÝ KHO</h2>
+      <ul>
+        <ul>
+          <li>Dashboard</li>
+          <li><a href="nhacungcap.html">Nhà cung cấp</a></li>
+          <li><a href="nhaphang.html">Nhập hàng</a></li>
+          <li><a href="kho.html">Kho</a></li>
+        </ul>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="section">
+        <h3>Danh sách nhà cung cấp</h3>
+        <!-- FORM + SEARCH -->
+        <div class="section">
+          <h3>Thêm nhà cung cấp</h3>
+          <input placeholder="Mã NCC" />
+          <input placeholder="Tên NCC" />
+          <input placeholder="Địa chỉ" />
+          <input placeholder="SĐT" />
+          <input placeholder="Email" />
+          <button>Thêm</button>
+        </div>
+
+        <div class="section">
+          <input
+            id="searchNCC"
+            placeholder="Tìm theo tên nhà cung cấp..."
+            style="width: 300px"
+          />
+        </div>
+
+        <table id="tblNCC">
+          <thead>
+            <tr>
+              <th>Mã NCC</th>
+              <th>Tên NCC</th>
+              <th>Địa chỉ</th>
+              <th>SĐT</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const nhaCungCapData = [
+        {
+          ma: "NCC01",
+          ten: "Hoa Đà Lạt",
+          dc: "Lâm Đồng",
+          sdt: "0901111111",
+          mail: "dalat@hoa.vn",
+        },
+        {
+          ma: "NCC02",
+          ten: "Hoa Tây Tựu",
+          dc: "Hà Nội",
+          sdt: "0902222222",
+          mail: "taytuu@hoa.vn",
+        },
+        {
+          ma: "NCC03",
+          ten: "Hoa Sài Gòn",
+          dc: "TP.HCM",
+          sdt: "0903333333",
+          mail: "saigon@hoa.vn",
+        },
+        {
+          ma: "NCC04",
+          ten: "Hoa Huế",
+          dc: "Huế",
+          sdt: "0904444444",
+          mail: "hue@hoa.vn",
+        },
+        {
+          ma: "NCC05",
+          ten: "Hoa Cần Thơ",
+          dc: "Cần Thơ",
+          sdt: "0905555555",
+          mail: "cantho@hoa.vn",
+        },
+        {
+          ma: "NCC06",
+          ten: "Hoa Đà Nẵng",
+          dc: "Đà Nẵng",
+          sdt: "0906666666",
+          mail: "danang@hoa.vn",
+        },
+        {
+          ma: "NCC07",
+          ten: "Hoa Bắc Giang",
+          dc: "Bắc Giang",
+          sdt: "0907777777",
+          mail: "bacgiang@hoa.vn",
+        },
+        {
+          ma: "NCC08",
+          ten: "Hoa Nghệ An",
+          dc: "Nghệ An",
+          sdt: "0908888888",
+          mail: "nghean@hoa.vn",
+        },
+        {
+          ma: "NCC09",
+          ten: "Hoa Hải Phòng",
+          dc: "Hải Phòng",
+          sdt: "0909999999",
+          mail: "haiphong@hoa.vn",
+        },
+        {
+          ma: "NCC10",
+          ten: "Hoa Lào Cai",
+          dc: "Lào Cai",
+          sdt: "0910000000",
+          mail: "laocai@hoa.vn",
+        },
+      ];
+
+      const tbody = document.querySelector("#tblNCC tbody");
+      nhaCungCapData.forEach((n) => {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `<td>${n.ma}</td><td>${n.ten}</td><td>${n.dc}</td><td>${n.sdt}</td><td>${n.mail}</td>`;
+        tbody.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>

@@ -13,6 +13,7 @@
       function togglePassword() {
         const password = document.getElementById("password");
         password.type = password.type === "password" ? "text" : "password";
+        
       }
 
       function login(event) {
@@ -28,8 +29,11 @@
         } else {
           alert("Tên đăng nhập hoặc mật khẩu sai!");
         }
+        
       }
     </script>
+    <script>console.log(password.value);
+        console.log(username.value);</script>
   </head>
   <body>
     <div style="background-color: white">
@@ -61,14 +65,9 @@
               <img src="../anh/shopXuanThanh.png" alt="" />
             </div>
             <div class="search-box" style="margin-top: 15px">
-              <select>
-                <option>Chọn danh mục...</option>
-                <option>Điện thoại</option>
-                <option>Máy tính</option>
-                <option>Phụ kiện</option>
-              </select>
+             
               <input type="text" placeholder="Tìm kiếm sản phẩm..." />
-              <button>🔍</button>
+              
             </div>
             <div style="width: 20px"></div>
             <div class="DienThoai">
